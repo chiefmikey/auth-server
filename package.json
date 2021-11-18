@@ -1,0 +1,37 @@
+{
+  "name": "auth-server",
+  "version": "0.0.1",
+  "description": "Authentication server",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "nodemon app.js"
+  },
+  "devDependencies": {
+    "@mikey-pro/style-guide": "^2.2.8",
+    "nodemon": "^2.0.15"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chiefmikey/auth-server.git"
+  },
+  "homepage": "https://github.com/chiefmikey/auth-server#readme",
+  "author": "me",
+  "bugs": {
+    "url": "https://github.com/chiefmikey/auth-server/issues"
+  },
+  "keywords": [
+    "auth-server",
+    "auth",
+    "authentication",
+    "server"
+  ],
+  "prettier": "@mikey-pro/prettier-config",
+  "eslintConfig": {
+    "extends": "@mikey-pro/eslint-config"
+  },
+  "stylelint": {
+    "extends": "@mikey-pro/stylelint-config"
+  }
+}

@@ -6,15 +6,16 @@ if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
 touch $CONTAINER_ALREADY_STARTED
   echo "-- First container startup --"
   sudo yum update -y
+  chown -R ec2-user:ec2-user /home/ec2-user/auth-server
+  chmod -R 774 /home/ec2-user/auth-server
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
   . /home/ec2-user/.nvm/nvm.sh
   nvm install node
-  chmod -R 774 /home/ec2-user/auth-server
-  sudo npm ci
+  npm ci
   npm start
 else
   echo "-- Not first container startup --"
   sudo yum update -y
-  sudo npm ci
+  npm ci
   npm start
 fi

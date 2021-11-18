@@ -1,3 +1,3 @@
-#!/bin/sh
+#!/bin/bash
 
-killall node
+sudo su -s /bin/bash -c 'killall node' node

@@ -1,21 +1,21 @@
-#!/bin/sh
+#!/bin/bash
 
 CONTAINER_ALREADY_STARTED="CONTAINER_ALREADY_STARTED_PLACEHOLDER"
 if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
 touch $CONTAINER_ALREADY_STARTED
   echo "-- First container startup --"
-  apk update
-  pk upgrade
-  apk add --no-cache \
+  sudo apk update
+  sudo apk upgrade
+  sudo apk add --no-cache \
     bash \
     nodejs \
     npm
-  addgroup -S node
-  adduser -S -D -G node node
+  sudo addgroup -S node
+  sudo adduser -S -D -G node node
   chown -R :node .
   chmod -R 774 .
-  su -s /bin/bash -c 'npm ci && npm start' node
+  sudo su -s /bin/bash -c 'npm ci && npm start' node
 else
   echo "-- Not first container startup --"
-  su -s /bin/bash -c 'npm ci && npm start' node
+  sudo su -s /bin/bash -c 'npm ci && npm start' node
 fi

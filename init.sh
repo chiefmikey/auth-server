@@ -9,9 +9,12 @@ touch $CONTAINER_ALREADY_STARTED
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
   . /home/ec2-user/.nvm/nvm.sh
   nvm install node
-  npm ci && npm start
+  chmod -R 774 /home/ec2-user/auth-server
+  npm ci
+  npm start
 else
   echo "-- Not first container startup --"
   sudo yum update -y
-  npm ci && npm start
+  npm ci
+  npm start
 fi

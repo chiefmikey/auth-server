@@ -1,14 +1,8 @@
 import Router from '@koa/router';
-import postRouter from './requests/post.js';
-import getRouter from './requests/get.js';
+import github from './requests/github.js';
 
-const router = new Router({ prefix: '/submit' });
+const router = new Router({ prefix: '/auth' });
 
-router.use(
-  postRouter.routes(),
-  postRouter.allowedMethods(),
-  getRouter.routes(),
-  getRouter.allowedMethods(),
-);
+router.use(github.routes(), github.allowedMethods());
 
 export default router;

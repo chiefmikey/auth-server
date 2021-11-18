@@ -13,7 +13,7 @@ jobs:
   #       run: docker-compose up -d
   continuous-deployment:
     environment:
-      name: mikl
+      name: auth-server
       url: https://github.com
     runs-on: ubuntu-latest
     # needs: [continuous-integration]

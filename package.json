@@ -7,6 +7,11 @@
     "start": "node app.js",
     "test": "nodemon app.js"
   },
+  "dependencies": {
+    "@koa/cors": "^3.1.0",
+    "koa": "^2.13.4",
+    "koa-bodyparser": "^4.3.0"
+  },
   "devDependencies": {
     "@mikey-pro/style-guide": "^2.2.8",
     "nodemon": "^2.0.15"
@@ -27,6 +32,10 @@
     "authentication",
     "server"
   ],
+  "contributors": [
+    "Mikl Wolfe <wolfe@mikl.io> (https://mikl.io)"
+  ],
+  "type": "module",
   "prettier": "@mikey-pro/prettier-config",
   "eslintConfig": {
     "extends": "@mikey-pro/eslint-config"

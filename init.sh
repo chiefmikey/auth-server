@@ -10,11 +10,11 @@ touch $CONTAINER_ALREADY_STARTED
   . /home/ec2-user/.nvm/nvm.sh
   nvm install node
   chmod -R 774 /home/ec2-user/auth-server
-  npm ci
+  sudo npm ci
   npm start
 else
   echo "-- Not first container startup --"
   sudo yum update -y
-  npm ci
+  sudo npm ci
   npm start
 fi

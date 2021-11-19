@@ -22,7 +22,7 @@ const githubToken = async () => {
       secret = data.SecretString;
     }
 
-    return JSON.parse(secret).TOKEN;
+    return JSON.parse(secret)[secretName];
   } catch (error) {
     return error;
   }

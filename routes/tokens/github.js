@@ -8,7 +8,7 @@ const secretName = 'chiefmikey-repo';
 
 const githubToken = async () => {
   try {
-    let secret = { TOKEN: '' };
+    let secret = { [secretName]: '' };
 
     const client = new SecretsManagerClient({
       region,
@@ -23,8 +23,8 @@ const githubToken = async () => {
     }
 
     return JSON.parse(secret)[secretName];
-  } catch (error) {
-    return error;
+  } catch {
+    return '';
   }
 };
 export default githubToken;

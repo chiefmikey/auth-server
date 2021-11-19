@@ -7,12 +7,16 @@ const router = new Router({ prefix: '/github' });
 router.get('/repo', async (context) => {
   try {
     const token = await githubToken();
-    context.response.status = 200;
-    context.response.body = token;
-  } catch (error) {
-    console.error('error with get', error);
-    context.response.status = 400;
-    context.response.body = 'Error retrieving GitHub token';
+    if (token && token.length > 0) {
+      context.response.status = 200;
+      context.response.body = token;
+    } else {
+      context.response.status = 404;
+      context.response.body = '';
+    }
+  } catch {
+    context.response.status = 404;
+    context.response.body = '';
   }
 });
 

@@ -10,10 +10,10 @@ touch $CONTAINER_ALREADY_STARTED
   . ~/.nvm/nvm.sh
   nvm install node
   npm ci
-  screen -dmS npm npm start
+  screen -S node -dm npm start
 else
   echo "-- Not first container startup --"
   yum update -y
   npm ci
-  screen -dmS npm npm start
+  screen -S node -dm npm start
 fi

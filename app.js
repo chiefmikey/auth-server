@@ -18,6 +18,6 @@ app
   .use(index.routes())
   .use(index.allowedMethods());
 
-app.listen(443, () => console.log('Koa is listening on port 443'));
+app.listen(80, () => console.log('Koa is listening on port 80'));
 
 export default app;

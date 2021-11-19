@@ -10,7 +10,6 @@ touch $CONTAINER_ALREADY_STARTED
   . ~/.nvm/nvm.sh
   nvm install node
   mkdir /home/ec2-user/auth-server/node_modules
-  chown -R root /home/ec2-user/auth-server
   npm ci
   screen -S node -dm npm start
 else

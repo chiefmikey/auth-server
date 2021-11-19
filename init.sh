@@ -7,7 +7,7 @@ touch $CONTAINER_ALREADY_STARTED
   echo "-- First container startup --"
   yum update -y
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-  . /home/ec2-user/.nvm/nvm.sh
+  . ~/.nvm/nvm.sh
   nvm install node
   npm ci
   su -s /bin/bash -c 'npm start' ec2-user

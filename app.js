@@ -3,8 +3,6 @@ import bodyParser from 'koa-bodyparser';
 import cors from '@koa/cors';
 import index from './routes/index.js';
 
-const port = process.env.PORT || 3000;
-
 const app = new Koa();
 
 app
@@ -20,6 +18,6 @@ app
   .use(index.routes())
   .use(index.allowedMethods());
 
-app.listen(port, () => console.log('Koa is listening on port', port));
+app.listen(80, () => console.log('Koa is listening on port 80'));
 
 export default app;

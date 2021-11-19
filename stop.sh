@@ -1,3 +1,3 @@
 #!/bin/bash
 
-killall node
+screen -S npm -X quit

@@ -4,7 +4,7 @@ import githubToken from '../tokens/github.js';
 
 const router = new Router({ prefix: '/github' });
 
-router.get('/token', async (context) => {
+router.get('/repo', async (context) => {
   try {
     const token = await githubToken();
     context.response.status = 200;

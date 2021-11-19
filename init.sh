@@ -5,17 +5,15 @@ CONTAINER_ALREADY_STARTED="CONTAINER_ALREADY_STARTED_PLACEHOLDER"
 if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
 touch $CONTAINER_ALREADY_STARTED
   echo "-- First container startup --"
-  sudo yum update -y
-  chown -R ec2-user:ec2-user /home/ec2-user/auth-server
-  chmod -R 774 /home/ec2-user/auth-server
+  yum update -y
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
   . /home/ec2-user/.nvm/nvm.sh
   nvm install node
   npm ci
-  npm start
+  su -s /bin/bash -c 'npm start' ec2-user
 else
   echo "-- Not first container startup --"
-  sudo yum update -y
+  yum update -y
   npm ci
-  npm start
+  su -s /bin/bash -c 'npm start' ec2-user
 fi

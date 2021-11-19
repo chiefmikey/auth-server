@@ -10,10 +10,10 @@ touch $CONTAINER_ALREADY_STARTED
   . ~/.nvm/nvm.sh
   nvm install node
   npm ci
-  su -s /bin/bash -c 'npm start' ec2-user
+  npm start
 else
   echo "-- Not first container startup --"
   yum update -y
   npm ci
-  su -s /bin/bash -c 'npm start' ec2-user
+  npm start
 fi

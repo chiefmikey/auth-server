@@ -1,3 +1,3 @@
 #!/bin/bash
 
-screen -S node -X quit
+killall screen

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-screen -S npm -X quit
+screen -S node -X quit

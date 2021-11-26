@@ -18,6 +18,7 @@ const checkUrl = async (context) => {
 };
 
 const corsOptions = {
+  origin: checkUrl,
   allowMethods: 'GET',
   maxAge: 600,
 };

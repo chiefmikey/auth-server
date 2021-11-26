@@ -8,24 +8,16 @@ const app = new Koa();
 const whitelist = new Set(['https://gitlang.net']);
 
 const checkUrl = async (context) => {
-  const requestOrigin = context.request.header.host;
-  if (!whitelist.has(requestOrigin)) {
-    return context.throw(`${requestOrigin} is not a valid origin`);
+  if (
+    context.request.header.referrer &&
+    whitelist.has(context.request.header.referrer)
+  ) {
+    return context;
   }
-  return requestOrigin;
-};
-
-const checkWhitelist = (context) => {
-  const requestOrigin = context.accept.headers.origin;
-  console.log(requestOrigin);
-  if (!whitelist.has(requestOrigin)) {
-    return context.throw(`${requestOrigin} is not a valid origin`);
-  }
-  return requestOrigin;
+  return context.throw('Not a valid origin');
 };
 
 const corsOptions = {
-  origin: checkWhitelist,
   allowMethods: 'GET',
   maxAge: 600,
 };

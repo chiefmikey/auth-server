@@ -7,26 +7,35 @@ const app = new Koa();
 
 const whitelist = new Set(['https://gitlang.net']);
 
-const checkWhitelist = (context) => {
-  const requestOrigin = context.accept.headers.origin;
+const checkUrl = async (context) => {
+  const requestOrigin = context.request.header.host;
   if (!whitelist.has(requestOrigin)) {
     return context.throw(`${requestOrigin} is not a valid origin`);
   }
   return requestOrigin;
 };
 
+const checkWhitelist = (context) => {
+  const requestOrigin = context.accept.headers.origin;
+  console.log(requestOrigin);
+  if (!whitelist.has(requestOrigin)) {
+    return context.throw(`${requestOrigin} is not a valid origin`);
+  }
+  return requestOrigin;
+};
+
+const corsOptions = {
+  origin: checkWhitelist,
+  allowMethods: 'GET',
+  maxAge: 600,
+};
+
 app
-  .use(
-    cors({
-      origin: checkWhitelist,
-      methods: 'GET',
-      maxAge: 600,
-    }),
-  )
+  .use(checkUrl)
+  .use(cors(corsOptions))
   .use(bodyParser())
   .use(index.routes())
-  .use(index.allowedMethods());
-
-app.listen(80, () => console.log('Koa is listening on port 80'));
+  .use(index.allowedMethods())
+  .listen(80, () => console.log('Koa is listening on port 80'));
 
 export default app;

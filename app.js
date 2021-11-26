@@ -5,13 +5,22 @@ import index from './routes/index.js';
 
 const app = new Koa();
 
+const whitelist = new Set(['https://gitlang.net']);
+
+const checkWhitelist = (context) => {
+  const requestOrigin = context.accept.headers.origin;
+  if (!whitelist.has(requestOrigin)) {
+    return context.throw(`${requestOrigin} is not a valid origin`);
+  }
+  return requestOrigin;
+};
+
 app
   .use(
     cors({
-      origin: '*',
+      origin: checkWhitelist,
       methods: 'GET',
-      allowedHeaders: '*',
-      exposedHeaders: '*',
+      maxAge: 600,
     }),
   )
   .use(bodyParser())

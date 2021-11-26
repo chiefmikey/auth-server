@@ -8,6 +8,7 @@ const app = new Koa();
 const whitelist = new Set(['https://gitlang.net']);
 
 const checkUrl = async (context) => {
+  console.log(context);
   if (
     context.request.header.referrer &&
     whitelist.has(context.request.header.referrer)

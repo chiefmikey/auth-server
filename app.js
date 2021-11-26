@@ -9,7 +9,7 @@ const whitelist = new Set(['https://gitlang.net']);
 
 const checkUrl = async (context) => {
   if (
-    context.request.header.referrer &&
+    context.request.header.origin &&
     whitelist.has(context.request.header.origin)
   ) {
     return context;

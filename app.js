@@ -1,6 +1,8 @@
+/* eslint-disable i18n-text/no-en */
+import cors from '@koa/cors';
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
-import cors from '@koa/cors';
+
 import index from './routes/index.js';
 
 const app = new Koa();
@@ -13,7 +15,7 @@ const checkUrl = (context, next) => {
     (context.request.header.origin &&
       !whitelist.has(context.request.header.origin))
   ) {
-    return context.throw('Not a valid origin');
+    return context.throw(`Not a valid origin`);
   }
   return next();
 };

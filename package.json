@@ -8,15 +8,18 @@
     "test": "nodemon app.js"
   },
   "dependencies": {
-    "@aws-sdk/client-secrets-manager": "^3.41.0",
+    "@aws-sdk/client-secrets-manager": "^3.42.0",
     "@koa/cors": "^3.1.0",
     "@koa/router": "^10.1.1",
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0"
   },
   "devDependencies": {
-    "@mikey-pro/style-guide": "^2.2.8",
-    "nodemon": "^2.0.15"
+    "@mikey-pro/style-guide": "^3.0.6",
+    "eslint": "^8.3.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.0",
+    "stylelint": "^14.1.0"
   },
   "license": "MIT",
   "repository": {

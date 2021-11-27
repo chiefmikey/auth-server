@@ -1,5 +1,5 @@
-/* eslint-disable no-param-reassign */
 import Router from '@koa/router';
+
 import githubToken from '../tokens/github.js';
 
 const router = new Router({ prefix: '/github' });

@@ -1,4 +1,3 @@
-/* eslint-disable i18n-text/no-en */
 import cors from '@koa/cors';
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
@@ -15,7 +14,7 @@ const checkUrl = (context, next) => {
     (context.request.header.origin &&
       !whitelist.has(context.request.header.origin))
   ) {
-    return context.throw(`Not a valid origin`);
+    return context.throw('Bad-Origin');
   }
   return next();
 };
@@ -26,7 +25,7 @@ const checkCors = (context) => {
     (context.request.header.origin &&
       !whitelist.has(context.request.header.origin))
   ) {
-    return context.throw('Not a valid origin');
+    return context.throw('Bad-Origin');
   }
   return context.request.header.origin;
 };
@@ -43,6 +42,6 @@ app
   .use(bodyParser())
   .use(index.routes())
   .use(index.allowedMethods())
-  .listen(80, () => console.log('Koa is listening on port 80'));
+  .listen(80);
 
 export default app;

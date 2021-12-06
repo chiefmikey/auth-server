@@ -6,9 +6,9 @@ import {
 const region = 'us-east-2';
 const secretName = 'chiefmikey-repo';
 
-const githubToken = async () => {
+const githubToken: () => Promise<string> = async () => {
   try {
-    let secret = { [secretName]: '' };
+    let secret = '';
 
     const client = new SecretsManagerClient({
       region,
@@ -21,10 +21,12 @@ const githubToken = async () => {
     if (data && data.SecretString) {
       secret = data.SecretString;
     }
-
-    return JSON.parse(secret)[secretName];
+    const json: { [secretName]: string } = JSON.parse(secret);
+    const parseSecret: { [secretName]: string } = json;
+    return parseSecret[secretName];
   } catch {
     return '';
   }
 };
+
 export default githubToken;

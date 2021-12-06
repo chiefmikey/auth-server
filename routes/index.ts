@@ -1,6 +1,6 @@
 import Router from '@koa/router';
 
-import github from './requests/github.js';
+import github from './requests/github';
 
 const router = new Router({ prefix: '/auth' });
 

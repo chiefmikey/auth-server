@@ -2,24 +2,27 @@
   "name": "auth-server",
   "version": "0.0.4",
   "description": "Authentication server",
-  "main": "app.js",
+  "main": "app.ts",
   "scripts": {
-    "start": "node app.js",
-    "test": "nodemon app.js"
+    "start": "node --loader ts-node/esm app.ts",
+    "test": "nodemon app.ts"
   },
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.43.0",
     "@koa/cors": "^3.1.0",
     "@koa/router": "^10.1.1",
     "koa": "^2.13.4",
-    "koa-bodyparser": "^4.3.0"
+    "koa-bodyparser": "^4.3.0",
+    "typescript": "^4.5.2"
   },
   "devDependencies": {
-    "@mikey-pro/style-guide": "^3.0.16",
-    "eslint": "^8.3.0",
+    "@mikey-pro/style-guide": "^3.1.5",
+    "@types/koa__router": "^8.0.11",
+    "eslint": "^8.4.0",
     "nodemon": "^2.0.15",
-    "prettier": "^2.5.0",
-    "stylelint": "^14.1.0"
+    "prettier": "^2.5.1",
+    "stylelint": "^14.1.0",
+    "ts-node": "^10.4.0"
   },
   "license": "MIT",
   "repository": {

@@ -21,8 +21,9 @@ const githubToken: () => Promise<string> = async () => {
     if (data && data.SecretString) {
       secret = data.SecretString;
     }
-    const json: { [secretName]: string } = JSON.parse(secret);
-    const parseSecret: { [secretName]: string } = json;
+    const parser: { parse: (argument: string) => { [secretName]: string } } =
+      JSON;
+    const parseSecret = parser.parse(secret);
     return parseSecret[secretName];
   } catch {
     return '';

@@ -4,30 +4,35 @@ import bodyParser from 'koa-bodyparser';
 
 import index from './routes/index';
 
+interface ContextType {
+  request: { header: { origin?: string } };
+  throw: (error: string) => void;
+}
+
 const app = new Koa();
 
 const whitelist = new Set(['https://gitlang.net']);
 
-const checkUrl = (context, next) => {
+const checkUrl = (context: ContextType, next: () => void) => {
   if (
     !context.request.header.origin ||
     (context.request.header.origin &&
       !whitelist.has(context.request.header.origin))
   ) {
-    return context.throw('Bad-Origin');
+    context.throw('Bad-Origin');
   }
   return next();
 };
 
-const checkCors = (context) => {
+const checkCors = (context: ContextType): string => {
   if (
     !context.request.header.origin ||
     (context.request.header.origin &&
       !whitelist.has(context.request.header.origin))
   ) {
-    return context.throw('Bad-Origin');
+    context.throw('Bad-Origin');
   }
-  return context.request.header.origin;
+  return context.request.header.origin || '';
 };
 
 const corsOptions = {

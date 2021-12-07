@@ -21,6 +21,6 @@
       "./*.ts": ["./*"]
     }
   },
-  "include": ["routes/**/*"],
+  "include": ["**/*"],
   "exclude": ["node_modules", "**/*.spec.ts"]
 }

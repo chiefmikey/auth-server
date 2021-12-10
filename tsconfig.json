@@ -1,25 +1,33 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Node 16",
-
   "compilerOptions": {
     "lib": ["es2021"],
     "moduleResolution": "node",
     "module": "esnext",
-    "target": "es2021",
+    "target": "es6",
     "sourceMap": true,
+    "allowJs": true,
 
     "strict": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
 
+    "noEmit": true,
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
+
     "paths": {
       "./*.ts": ["./*"]
     }
   },
+
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs",
+    },
+  },
+
   "exclude": ["node_modules", "**/*.spec.ts"]
 }

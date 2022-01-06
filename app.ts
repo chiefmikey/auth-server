@@ -11,7 +11,10 @@ interface ContextType {
 
 const app = new Koa();
 
-const whitelist = new Set(['https://gitlang.net']);
+const whitelist = new Set([
+  'https://gitlang.net',
+  'https://viewmaster3000.com',
+]);
 
 const checkUrl = (context: ContextType, next: () => void) => {
   if (

@@ -1,6 +1,6 @@
 import Router from '@koa/router';
 
-import githubToken from '../tokens/github';
+import githubToken from '../tokens/githubToken';
 
 const router = new Router({ prefix: '/github' });
 

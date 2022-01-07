@@ -5,7 +5,6 @@ let octokit;
 const repos = async (inputOwner, token) => {
   try {
     const owner = inputOwner;
-    console.log(owner);
     const allRepos = [];
     if (!octokit) {
       octokit = new Octokit({ auth: token });
@@ -24,8 +23,7 @@ const repos = async (inputOwner, token) => {
       }
     }
     return allRepos;
-  } catch (error) {
-    console.log('Error getting repos', error);
+  } catch {
     return [];
   }
 };

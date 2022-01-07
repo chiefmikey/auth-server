@@ -14,7 +14,7 @@ router.get('/langs', async (context) => {
     }
     const response = await languages(
       context.request.query.owner,
-      context.request.query.repo,
+      context.request.query.repos,
       token,
     );
     if (response && response.length > 0) {

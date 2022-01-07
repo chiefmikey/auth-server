@@ -1,8 +1,8 @@
 import { Octokit } from 'octokit';
 
-let octokit;
+let octokit: Octokit;
 
-const fetchLanguage = async (owner, repo, token) => {
+const fetchLanguage = async (owner: string, repo: string, token: string) => {
   try {
     const allLangs = [];
     if (!octokit) {
@@ -26,7 +26,7 @@ const fetchLanguage = async (owner, repo, token) => {
   }
 };
 
-const languages = (owner, names, token) => {
+const languages = (owner: string, names: string[], token: string) => {
   const languages = [];
   for (const repo of names) {
     languages.push(fetchLanguage(owner, repo, token));

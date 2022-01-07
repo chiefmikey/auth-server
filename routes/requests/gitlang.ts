@@ -13,8 +13,8 @@ router.get('/langs', async (context) => {
       token = await auth();
     }
     const response = await languages(
-      context.request.query.owner,
-      JSON.parse(context.request.query.repos as string),
+      context.request.query.owner as string,
+      JSON.parse(context.request.query.repos as string) as string[],
       token,
     );
     if (response && response.length > 0) {

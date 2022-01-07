@@ -1,8 +1,8 @@
 import { Octokit } from 'octokit';
 
-let octokit;
+let octokit: Octokit;
 
-const repos = async (owner, token) => {
+const repos = async (owner: string, token: string) => {
   try {
     const allRepos = [];
     if (!octokit) {

@@ -1,15 +1,15 @@
 import Router from '@koa/router';
 
-import github from './requests/github';
-import reddit from './requests/reddit';
+import gitlang from './requests/gitlang';
+import vm3000 from './requests/vm3000';
 
 const router = new Router({ prefix: '/auth' });
 
 router.use(
-  github.routes(),
-  github.allowedMethods(),
-  reddit.routes(),
-  reddit.allowedMethods(),
+  gitlang.routes(),
+  gitlang.allowedMethods(),
+  vm3000.routes(),
+  vm3000.allowedMethods(),
 );
 
 export default router;

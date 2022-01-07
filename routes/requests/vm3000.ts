@@ -1,14 +1,14 @@
 import Router from '@koa/router';
 
-import githubToken from '../tokens/githubToken';
+import auth from '../helpers/reddit/auth';
 
-const router = new Router({ prefix: '/github' });
+const router = new Router({ prefix: '/vm3000' });
 
 router.get(
-  '/repo',
+  '/vm3000',
   async (context: { response: { status: number; body: string } }) => {
     try {
-      const token: string = await githubToken();
+      const token: string = await auth();
       if (token && token.length > 0) {
         context.response.status = 200;
         context.response.body = token;

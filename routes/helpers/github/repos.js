@@ -5,6 +5,7 @@ let octokit;
 const repos = async (inputOwner, token) => {
   try {
     const owner = inputOwner;
+    console.log(owner);
     const allRepos = [];
     if (!octokit) {
       octokit = new Octokit({ auth: token });

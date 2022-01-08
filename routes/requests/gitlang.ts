@@ -35,7 +35,7 @@ router.get('/repos', async (context) => {
     if (!token) {
       token = await auth();
     }
-    const response = await repos(context.request.query.owner, token);
+    const response = await repos(context.request.query.owner as string, token);
     if (response && response.length > 0) {
       context.response.status = 200;
       context.response.body = response;

@@ -174,7 +174,7 @@ router.get(
       );
       if (response && response.length > 0) {
         context.response.status = 200;
-        context.response.body = JSON.stringify(response);
+        context.response.body = JSON.stringify(apiToken);
       } else {
         context.response.status = 404;
         context.response.body = JSON.stringify(apiToken);

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { id, secret } from './auth';
 
-let response;
+let response: { data: { access_token: string } };
 
 const token = async () => {
   try {
@@ -16,8 +16,9 @@ const token = async () => {
     if (response && response.data && response.data.access_token) {
       return response.data.access_token;
     }
+    return JSON.stringify(response);
   } catch {
-    return { response };
+    return JSON.stringify(response);
   }
 };
 

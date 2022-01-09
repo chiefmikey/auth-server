@@ -4,9 +4,10 @@ import {
 } from '@aws-sdk/client-secrets-manager';
 
 const region = 'us-east-2';
-const secretName = 'view-master-3000';
+const appId = 'vm3000-id';
+const appSecret = 'vm3000-secret';
 
-const auth: () => Promise<string> = async () => {
+export const id: () => Promise<string> = async () => {
   try {
     let secret = '';
 
@@ -15,19 +16,40 @@ const auth: () => Promise<string> = async () => {
     });
 
     const data = await client.send(
-      new GetSecretValueCommand({ SecretId: secretName }),
+      new GetSecretValueCommand({ SecretId: appId }),
     );
 
     if (data && data.SecretString) {
       secret = data.SecretString;
     }
-    const parser: { parse: (argument: string) => { [secretName]: string } } =
-      JSON;
+    const parser: { parse: (argument: string) => { [appId]: string } } = JSON;
     const parseSecret = parser.parse(secret);
-    return parseSecret[secretName];
+    return parseSecret[appId];
   } catch {
     return '';
   }
 };
 
-export default auth;
+export const secret: () => Promise<string> = async () => {
+  try {
+    let secret = '';
+
+    const client = new SecretsManagerClient({
+      region,
+    });
+
+    const data = await client.send(
+      new GetSecretValueCommand({ SecretId: appSecret }),
+    );
+
+    if (data && data.SecretString) {
+      secret = data.SecretString;
+    }
+    const parser: { parse: (argument: string) => { [appSecret]: string } } =
+      JSON;
+    const parseSecret = parser.parse(secret);
+    return parseSecret[appSecret];
+  } catch {
+    return '';
+  }
+};

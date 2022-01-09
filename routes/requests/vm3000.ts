@@ -2,7 +2,6 @@ import Router from '@koa/router';
 import Snoowrap from 'snoowrap';
 import { Timespan } from 'snoowrap/dist/objects/Subreddit';
 
-import auth from '../helpers/reddit/auth';
 import {
   getControversialSubmissions,
   getHotSubmissions,
@@ -11,9 +10,10 @@ import {
   getTopSubmissions,
   getUserSubmissions,
 } from '../helpers/reddit/submissions';
+import token from '../helpers/reddit/token';
 
 const router = new Router({ prefix: '/vm3000' });
-let token: string;
+let apiToken: string;
 let r: Snoowrap;
 
 router.get(
@@ -23,13 +23,13 @@ router.get(
     response: { status: number; body: string };
   }) => {
     try {
-      if (!token) {
-        token = await auth();
+      if (!apiToken) {
+        apiToken = await token();
       }
       if (!r) {
         r = new Snoowrap({
           userAgent: 'View-Master 3000',
-          accessToken: token,
+          accessToken: apiToken,
         });
       }
       const response = await getUserSubmissions(
@@ -57,13 +57,13 @@ router.get(
     response: { status: number; body: string };
   }) => {
     try {
-      if (!token) {
-        token = await auth();
+      if (!apiToken) {
+        apiToken = await token();
       }
       if (!r) {
         r = new Snoowrap({
           userAgent: 'View-Master 3000',
-          accessToken: token,
+          accessToken: apiToken,
         });
       }
       const response = await getHotSubmissions(
@@ -91,13 +91,13 @@ router.get(
     response: { status: number; body: string };
   }) => {
     try {
-      if (!token) {
-        token = await auth();
+      if (!apiToken) {
+        apiToken = await token();
       }
       if (!r) {
         r = new Snoowrap({
           userAgent: 'View-Master 3000',
-          accessToken: token,
+          accessToken: apiToken,
         });
       }
       const response = await getRisingSubmissions(
@@ -125,13 +125,13 @@ router.get(
     response: { status: number; body: string };
   }) => {
     try {
-      if (!token) {
-        token = await auth();
+      if (!apiToken) {
+        apiToken = await token();
       }
       if (!r) {
         r = new Snoowrap({
           userAgent: 'View-Master 3000',
-          accessToken: token,
+          accessToken: apiToken,
         });
       }
       const response = await getControversialSubmissions(
@@ -159,13 +159,13 @@ router.get(
     response: { status: number; body: string };
   }) => {
     try {
-      if (!token) {
-        token = await auth();
+      if (!apiToken) {
+        apiToken = await token();
       }
       if (!r) {
         r = new Snoowrap({
           userAgent: 'View-Master 3000',
-          accessToken: token,
+          accessToken: apiToken,
         });
       }
       const response = await getNewSubmissions(
@@ -193,13 +193,13 @@ router.get(
     response: { status: number; body: string };
   }) => {
     try {
-      if (!token) {
-        token = await auth();
+      if (!apiToken) {
+        apiToken = await token();
       }
       if (!r) {
         r = new Snoowrap({
           userAgent: 'View-Master 3000',
-          accessToken: token,
+          accessToken: apiToken,
         });
       }
       const response = await getTopSubmissions(

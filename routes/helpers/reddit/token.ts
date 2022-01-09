@@ -14,7 +14,7 @@ const token = async () => {
       },
     });
     if (response && response.data && response.data.access_token) {
-      return response.data.access_token;
+      return JSON.stringify(response.data.access_token);
     }
     return JSON.stringify(response);
   } catch {

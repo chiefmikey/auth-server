@@ -17,7 +17,7 @@ const token = async () => {
       return response.data.access_token;
     }
   } catch {
-    return response.data;
+    return { response };
   }
 };
 

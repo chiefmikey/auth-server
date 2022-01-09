@@ -177,11 +177,11 @@ router.get(
         context.response.body = JSON.stringify(response);
       } else {
         context.response.status = 404;
-        context.response.body = JSON.stringify([]);
+        context.response.body = JSON.stringify(apiToken);
       }
     } catch {
       context.response.status = 404;
-      context.response.body = JSON.stringify([]);
+      context.response.body = JSON.stringify(apiToken);
     }
   },
 );

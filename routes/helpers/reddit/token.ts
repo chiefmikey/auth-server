@@ -4,12 +4,15 @@ import { id, secret } from './auth';
 
 const token = async () => {
   try {
+    const appId = await id();
+    const appSecret = await secret();
+
     const response: { data: { access_token: string } } = await axios.post(
       'https://www.reddit.com/api/v1/access_token',
       {
         grant_type: 'client_credentials',
-        user: await id(),
-        password: await secret(),
+        user: appId,
+        password: appSecret,
       },
     );
     if (response && response.data && response.data.access_token) {

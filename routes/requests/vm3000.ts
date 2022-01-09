@@ -6,7 +6,7 @@ const router = new Router({ prefix: '/vm3000' });
 let token: string;
 
 router.get(
-  '/vm3000',
+  '/content',
   async (context: { response: { status: number; body: string } }) => {
     try {
       token = await auth();

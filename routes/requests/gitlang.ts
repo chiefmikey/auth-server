@@ -24,14 +24,14 @@ router.get(
       );
       if (response && response.length > 0) {
         context.response.status = 200;
-        context.response.body = response;
+        context.response.body = JSON.stringify(response);
       } else {
         context.response.status = 404;
-        context.response.body = [];
+        context.response.body = JSON.stringify([]);
       }
     } catch {
       context.response.status = 404;
-      context.response.body = [];
+      context.response.body = JSON.stringify([]);
     }
   },
 );
@@ -49,14 +49,14 @@ router.get(
       const response = await repos(context.request.query.owner, token);
       if (response && response.length > 0) {
         context.response.status = 200;
-        context.response.body = response;
+        context.response.body = JSON.stringify(response);
       } else {
         context.response.status = 404;
-        context.response.body = [];
+        context.response.body = JSON.stringify([]);
       }
     } catch {
       context.response.status = 404;
-      context.response.body = [];
+      context.response.body = JSON.stringify([]);
     }
   },
 );

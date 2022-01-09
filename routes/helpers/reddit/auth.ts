@@ -25,8 +25,8 @@ export const id: () => Promise<string> = async () => {
     const parser: { parse: (argument: string) => { [appId]: string } } = JSON;
     const parseSecret = parser.parse(secret);
     return parseSecret[appId];
-  } catch {
-    return '';
+  } catch (error) {
+    return JSON.stringify(error);
   }
 };
 
@@ -49,7 +49,7 @@ export const secret: () => Promise<string> = async () => {
       JSON;
     const parseSecret = parser.parse(secret);
     return parseSecret[appSecret];
-  } catch {
-    return '';
+  } catch (error) {
+    return JSON.stringify(error);
   }
 };

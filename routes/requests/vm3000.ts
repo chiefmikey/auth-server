@@ -162,7 +162,6 @@ router.get(
       if (!apiToken) {
         apiToken = await token();
       }
-      console.log(apiToken);
       if (!r) {
         r = new Snoowrap({
           userAgent: 'View-Master 3000',
@@ -175,14 +174,14 @@ router.get(
       );
       if (response && response.length > 0) {
         context.response.status = 200;
-        context.response.body = JSON.stringify(apiToken);
+        context.response.body = apiToken;
       } else {
         context.response.status = 404;
-        context.response.body = JSON.stringify(apiToken);
+        context.response.body = apiToken;
       }
     } catch {
       context.response.status = 404;
-      context.response.body = JSON.stringify(apiToken);
+      context.response.body = apiToken;
     }
   },
 );

@@ -162,6 +162,7 @@ router.get(
       if (!apiToken) {
         apiToken = await token();
       }
+      console.log(apiToken);
       if (!r) {
         r = new Snoowrap({
           userAgent: 'View-Master 3000',

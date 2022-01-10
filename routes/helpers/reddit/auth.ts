@@ -4,6 +4,7 @@ import {
 } from '@aws-sdk/client-secrets-manager';
 
 const region = 'us-east-2';
+const secretName = 'view-master-3000';
 const appId = 'vm3000-id';
 const appSecret = 'vm3000-secret';
 
@@ -16,7 +17,7 @@ export const id: () => Promise<string> = async () => {
     });
 
     const data = await client.send(
-      new GetSecretValueCommand({ SecretId: appId }),
+      new GetSecretValueCommand({ SecretId: secretName }),
     );
 
     if (data && data.SecretString) {
@@ -40,7 +41,7 @@ export const secret: () => Promise<string> = async () => {
     });
 
     const data = await client.send(
-      new GetSecretValueCommand({ SecretId: appSecret }),
+      new GetSecretValueCommand({ SecretId: secretName }),
     );
 
     if (data && data.SecretString) {

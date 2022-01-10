@@ -26,14 +26,14 @@ const token = async () => {
       return out.join('&');
     };
 
-    const response = await client.post(
+    const response: { data: { access_token: string } } = await client.post(
       'https://www.reddit.com/api/v1/access_token',
       urlEncode(),
     );
     if (response && response.data && response.data.access_token) {
       return response.data.access_token;
     }
-    return response;
+    return '';
   } catch (error) {
     return JSON.stringify(error);
   }

@@ -40,7 +40,7 @@ const checkCors = (context: ContextType): string => {
 
 const corsOptions = {
   origin: checkCors,
-  allowMethods: 'GET',
+  allowMethods: ['GET', 'POST'],
   maxAge: 600,
 };
 

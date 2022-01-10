@@ -174,14 +174,14 @@ router.get(
       );
       if (response && response.length > 0) {
         context.response.status = 200;
-        context.response.body = apiToken;
+        context.response.body = JSON.stringify(response);
       } else {
         context.response.status = 404;
-        context.response.body = apiToken;
+        context.response.body = JSON.stringify([]);
       }
     } catch {
       context.response.status = 404;
-      context.response.body = apiToken;
+      context.response.body = JSON.stringify([]);
     }
   },
 );

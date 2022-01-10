@@ -9,6 +9,7 @@ const token = async () => {
   try {
     const appId = process.env.appId || (await id());
     const appSecret = process.env.appSecret || (await secret());
+    console.log('idididid', appId, appSecret);
 
     const client = axios.create({
       auth: {

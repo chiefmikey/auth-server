@@ -17,6 +17,7 @@ const whitelist = new Set([
 ]);
 
 const checkUrl = (context: ContextType, next: () => void) => {
+  console.log('Request header origin:', context.request.header.origin);
   if (
     !context.request.header.origin ||
     (context.request.header.origin &&
@@ -27,13 +28,13 @@ const checkUrl = (context: ContextType, next: () => void) => {
   return next();
 };
 
-const checkCors = (context: ContextType): string => {
+const checkCors = (context: ContextType) => {
   if (
     !context.request.header.origin ||
     (context.request.header.origin &&
       !whitelist.has(context.request.header.origin))
   ) {
-    context.throw('Bad-Origin');
+    context.throw('CORS-Bad-Origin');
   }
   return context.request.header.origin || '';
 };

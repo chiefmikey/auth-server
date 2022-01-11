@@ -13,7 +13,6 @@ import {
 import token from '../helpers/reddit/token';
 
 const router = new Router({ prefix: '/vm3000' });
-let apiToken: string;
 let r: Snoowrap;
 
 router.get(
@@ -23,9 +22,7 @@ router.get(
     response: { status: number; body: string };
   }) => {
     try {
-      if (!apiToken) {
-        apiToken = await token();
-      }
+      const apiToken = await token();
       if (!r) {
         r = new Snoowrap({
           userAgent: 'View-Master 3000',
@@ -57,9 +54,7 @@ router.get(
     response: { status: number; body: string };
   }) => {
     try {
-      if (!apiToken) {
-        apiToken = await token();
-      }
+      const apiToken = await token();
       if (!r) {
         r = new Snoowrap({
           userAgent: 'View-Master 3000',
@@ -91,9 +86,7 @@ router.get(
     response: { status: number; body: string };
   }) => {
     try {
-      if (!apiToken) {
-        apiToken = await token();
-      }
+      const apiToken = await token();
       if (!r) {
         r = new Snoowrap({
           userAgent: 'View-Master 3000',
@@ -125,9 +118,7 @@ router.get(
     response: { status: number; body: string };
   }) => {
     try {
-      if (!apiToken) {
-        apiToken = await token();
-      }
+      const apiToken = await token();
       if (!r) {
         r = new Snoowrap({
           userAgent: 'View-Master 3000',
@@ -159,9 +150,7 @@ router.get(
     response: { status: number; body: string };
   }) => {
     try {
-      if (!apiToken) {
-        apiToken = await token();
-      }
+      const apiToken = await token();
       if (!r) {
         r = new Snoowrap({
           userAgent: 'View-Master 3000',
@@ -193,9 +182,7 @@ router.get(
     response: { status: number; body: string };
   }) => {
     try {
-      if (!apiToken) {
-        apiToken = await token();
-      }
+      const apiToken = await token();
       if (!r) {
         r = new Snoowrap({
           userAgent: 'View-Master 3000',

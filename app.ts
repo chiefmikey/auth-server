@@ -17,7 +17,7 @@ const whitelist = new Set([
 ]);
 
 const checkUrl = (context: ContextType, next: () => void) => {
-  console.log('Request header origin:', context.request.header.origin);
+  console.log('Request:', context.request);
   if (
     !context.request.header.origin ||
     (context.request.header.origin &&

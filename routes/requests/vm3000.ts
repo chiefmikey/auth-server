@@ -193,19 +193,17 @@ router.get(
   async (context: { response: { status: number; body: string } }) => {
     try {
       const apiToken = await token();
-      const r = new Snoowrap({
-        userAgent: 'View-Master 3000',
-        accessToken: apiToken,
-      });
       response = await fetchMore(response);
       if (response && response.length > 0) {
         context.response.status = 200;
         context.response.body = JSON.stringify(response);
       } else {
+        console.log('No response error in more', response);
         context.response.status = 404;
         context.response.body = JSON.stringify([]);
       }
     } catch {
+      console.log('Catch error in more', response);
       context.response.status = 404;
       context.response.body = JSON.stringify([]);
     }

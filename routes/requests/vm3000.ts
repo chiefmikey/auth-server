@@ -165,10 +165,12 @@ router.get(
         context.response.status = 200;
         context.response.body = JSON.stringify(response);
       } else {
+        console.log('No response error', response);
         context.response.status = 404;
         context.response.body = JSON.stringify([]);
       }
-    } catch {
+    } catch (error) {
+      console.log('Get new error', error);
       context.response.status = 404;
       context.response.body = JSON.stringify([]);
     }

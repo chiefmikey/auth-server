@@ -1,8 +1,8 @@
 import Router from '@koa/router';
-import Snoowrap, { Listing, Submission } from 'snoowrap';
+import Snoowrap, { Listing, RedditContent, Submission } from 'snoowrap';
 import { Timespan } from 'snoowrap/dist/objects/Subreddit';
 
-import fetchMore from '../helpers/reddit/fetchMore.ts';
+import fetchMore from '../helpers/reddit/fetchMore';
 import {
   getControversialSubmissions,
   getHotSubmissions,
@@ -215,7 +215,7 @@ router.get(
           accessToken: apiToken,
         });
       }
-      response = await fetchMore(response);
+      response = await fetchMore(response as Listing<Submission> | any[]);
       if (response && response.length > 0) {
         context.response.status = 200;
         context.response.body = JSON.stringify(response);

@@ -203,10 +203,7 @@ router.get(
 
 router.get(
   '/more',
-  async (context: {
-    request: { query: { subName: string; time: Timespan } };
-    response: { status: number; body: string };
-  }) => {
+  async (context: { response: { status: number; body: string } }) => {
     try {
       const apiToken = await token();
       if (!r) {

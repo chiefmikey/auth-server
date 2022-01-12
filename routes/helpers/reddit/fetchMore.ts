@@ -1,7 +1,7 @@
 import { Listing, Submission } from 'snoowrap';
 
-const fetchMore = (response: Listing<Submission> | any[]) => {
-  return (response as Listing<Submission>).fetchMore({
+const fetchMore = async (response: Listing<Submission> | any[]) => {
+  return await (response as Listing<Submission>).fetchMore({
     amount: 128,
     append: false,
   });

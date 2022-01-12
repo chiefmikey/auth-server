@@ -16,7 +16,6 @@ import token from '../helpers/reddit/token';
 let response: Listing<Submission> | never[] = [];
 
 const router = new Router({ prefix: '/vm3000' });
-let r: Snoowrap;
 
 router.get(
   '/user',
@@ -26,12 +25,10 @@ router.get(
   }) => {
     try {
       const apiToken = await token();
-      if (!r) {
-        r = new Snoowrap({
-          userAgent: 'View-Master 3000',
-          accessToken: apiToken,
-        });
-      }
+      const r = new Snoowrap({
+        userAgent: 'View-Master 3000',
+        accessToken: apiToken,
+      });
       response = await getUserSubmissions(r, context.request.query.subName);
       if (response && response.length > 0) {
         context.response.status = 200;
@@ -55,12 +52,10 @@ router.get(
   }) => {
     try {
       const apiToken = await token();
-      if (!r) {
-        r = new Snoowrap({
-          userAgent: 'View-Master 3000',
-          accessToken: apiToken,
-        });
-      }
+      const r = new Snoowrap({
+        userAgent: 'View-Master 3000',
+        accessToken: apiToken,
+      });
       response = await getHotSubmissions(r, context.request.query.subName);
       if (response && response.length > 0) {
         context.response.status = 200;
@@ -84,12 +79,10 @@ router.get(
   }) => {
     try {
       const apiToken = await token();
-      if (!r) {
-        r = new Snoowrap({
-          userAgent: 'View-Master 3000',
-          accessToken: apiToken,
-        });
-      }
+      const r = new Snoowrap({
+        userAgent: 'View-Master 3000',
+        accessToken: apiToken,
+      });
       response = await getRisingSubmissions(r, context.request.query.subName);
       if (response && response.length > 0) {
         context.response.status = 200;
@@ -113,12 +106,10 @@ router.get(
   }) => {
     try {
       const apiToken = await token();
-      if (!r) {
-        r = new Snoowrap({
-          userAgent: 'View-Master 3000',
-          accessToken: apiToken,
-        });
-      }
+      const r = new Snoowrap({
+        userAgent: 'View-Master 3000',
+        accessToken: apiToken,
+      });
       response = await getControversialSubmissions(
         r,
         context.request.query.subName,
@@ -145,12 +136,10 @@ router.get(
   }) => {
     try {
       const apiToken = await token();
-      if (!r) {
-        r = new Snoowrap({
-          userAgent: 'View-Master 3000',
-          accessToken: apiToken,
-        });
-      }
+      const r = new Snoowrap({
+        userAgent: 'View-Master 3000',
+        accessToken: apiToken,
+      });
       response = await getNewSubmissions(r, context.request.query.subName);
       if (response && response.length > 0) {
         context.response.status = 200;
@@ -176,12 +165,10 @@ router.get(
   }) => {
     try {
       const apiToken = await token();
-      if (!r) {
-        r = new Snoowrap({
-          userAgent: 'View-Master 3000',
-          accessToken: apiToken,
-        });
-      }
+      const r = new Snoowrap({
+        userAgent: 'View-Master 3000',
+        accessToken: apiToken,
+      });
       response = await getTopSubmissions(
         r,
         context.request.query.subName,
@@ -206,13 +193,11 @@ router.get(
   async (context: { response: { status: number; body: string } }) => {
     try {
       const apiToken = await token();
-      if (!r) {
-        r = new Snoowrap({
-          userAgent: 'View-Master 3000',
-          accessToken: apiToken,
-        });
-      }
-      response = await fetchMore(response as Listing<Submission> | any[]);
+      const r = new Snoowrap({
+        userAgent: 'View-Master 3000',
+        accessToken: apiToken,
+      });
+      response = await fetchMore(response);
       if (response && response.length > 0) {
         context.response.status = 200;
         context.response.body = JSON.stringify(response);

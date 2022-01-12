@@ -1,7 +1,8 @@
 import Router from '@koa/router';
-import Snoowrap from 'snoowrap';
+import Snoowrap, { Listing, Submission } from 'snoowrap';
 import { Timespan } from 'snoowrap/dist/objects/Subreddit';
 
+import fetchMore from '../helpers/reddit/fetchMore.ts';
 import {
   getControversialSubmissions,
   getHotSubmissions,
@@ -11,6 +12,8 @@ import {
   getUserSubmissions,
 } from '../helpers/reddit/submissions';
 import token from '../helpers/reddit/token';
+
+let response: Listing<Submission> | never[] = [];
 
 const router = new Router({ prefix: '/vm3000' });
 let r: Snoowrap;
@@ -29,10 +32,7 @@ router.get(
           accessToken: apiToken,
         });
       }
-      const response = await getUserSubmissions(
-        r,
-        context.request.query.subName,
-      );
+      response = await getUserSubmissions(r, context.request.query.subName);
       if (response && response.length > 0) {
         context.response.status = 200;
         context.response.body = JSON.stringify(response);
@@ -61,10 +61,7 @@ router.get(
           accessToken: apiToken,
         });
       }
-      const response = await getHotSubmissions(
-        r,
-        context.request.query.subName,
-      );
+      response = await getHotSubmissions(r, context.request.query.subName);
       if (response && response.length > 0) {
         context.response.status = 200;
         context.response.body = JSON.stringify(response);
@@ -93,10 +90,7 @@ router.get(
           accessToken: apiToken,
         });
       }
-      const response = await getRisingSubmissions(
-        r,
-        context.request.query.subName,
-      );
+      response = await getRisingSubmissions(r, context.request.query.subName);
       if (response && response.length > 0) {
         context.response.status = 200;
         context.response.body = JSON.stringify(response);
@@ -125,7 +119,7 @@ router.get(
           accessToken: apiToken,
         });
       }
-      const response = await getControversialSubmissions(
+      response = await getControversialSubmissions(
         r,
         context.request.query.subName,
       );
@@ -157,10 +151,7 @@ router.get(
           accessToken: apiToken,
         });
       }
-      const response = await getNewSubmissions(
-        r,
-        context.request.query.subName,
-      );
+      response = await getNewSubmissions(r, context.request.query.subName);
       if (response && response.length > 0) {
         context.response.status = 200;
         context.response.body = JSON.stringify(response);
@@ -191,11 +182,40 @@ router.get(
           accessToken: apiToken,
         });
       }
-      const response = await getTopSubmissions(
+      response = await getTopSubmissions(
         r,
         context.request.query.subName,
         context.request.query.time,
       );
+      if (response && response.length > 0) {
+        context.response.status = 200;
+        context.response.body = JSON.stringify(response);
+      } else {
+        context.response.status = 404;
+        context.response.body = JSON.stringify([]);
+      }
+    } catch {
+      context.response.status = 404;
+      context.response.body = JSON.stringify([]);
+    }
+  },
+);
+
+router.get(
+  '/more',
+  async (context: {
+    request: { query: { subName: string; time: Timespan } };
+    response: { status: number; body: string };
+  }) => {
+    try {
+      const apiToken = await token();
+      if (!r) {
+        r = new Snoowrap({
+          userAgent: 'View-Master 3000',
+          accessToken: apiToken,
+        });
+      }
+      response = await fetchMore(response);
       if (response && response.length > 0) {
         context.response.status = 200;
         context.response.body = JSON.stringify(response);

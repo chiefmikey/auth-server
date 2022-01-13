@@ -1,5 +1,5 @@
 import Router from '@koa/router';
-import Snoowrap, { Listing, RedditContent, Submission } from 'snoowrap';
+import Snoowrap, { Listing, Submission } from 'snoowrap';
 import { Timespan } from 'snoowrap/dist/objects/Subreddit';
 
 import fetchMore from '../helpers/reddit/fetchMore';
@@ -34,7 +34,7 @@ router.get(
         context.response.status = 200;
         context.response.body = JSON.stringify(response);
       } else {
-        context.response.status = 404;
+        context.response.status = 200;
         context.response.body = JSON.stringify([]);
       }
     } catch {
@@ -61,7 +61,7 @@ router.get(
         context.response.status = 200;
         context.response.body = JSON.stringify(response);
       } else {
-        context.response.status = 404;
+        context.response.status = 200;
         context.response.body = JSON.stringify([]);
       }
     } catch {
@@ -88,7 +88,7 @@ router.get(
         context.response.status = 200;
         context.response.body = JSON.stringify(response);
       } else {
-        context.response.status = 404;
+        context.response.status = 200;
         context.response.body = JSON.stringify([]);
       }
     } catch {
@@ -118,7 +118,7 @@ router.get(
         context.response.status = 200;
         context.response.body = JSON.stringify(response);
       } else {
-        context.response.status = 404;
+        context.response.status = 200;
         context.response.body = JSON.stringify([]);
       }
     } catch {
@@ -145,12 +145,10 @@ router.get(
         context.response.status = 200;
         context.response.body = JSON.stringify(response);
       } else {
-        console.log('No response error', response);
-        context.response.status = 404;
+        context.response.status = 200;
         context.response.body = JSON.stringify([]);
       }
-    } catch (error) {
-      console.log('Get new error', error);
+    } catch {
       context.response.status = 404;
       context.response.body = JSON.stringify([]);
     }
@@ -178,7 +176,7 @@ router.get(
         context.response.status = 200;
         context.response.body = JSON.stringify(response);
       } else {
-        context.response.status = 404;
+        context.response.status = 200;
         context.response.body = JSON.stringify([]);
       }
     } catch {
@@ -192,18 +190,15 @@ router.get(
   '/more',
   async (context: { response: { status: number; body: string } }) => {
     try {
-      const apiToken = await token();
       response = await fetchMore(response);
       if (response && response.length > 0) {
         context.response.status = 200;
         context.response.body = JSON.stringify(response);
       } else {
-        console.log('No response error in more', response);
-        context.response.status = 404;
+        context.response.status = 200;
         context.response.body = JSON.stringify([]);
       }
     } catch {
-      console.log('Catch error in more', response);
       context.response.status = 404;
       context.response.body = JSON.stringify([]);
     }

@@ -3,7 +3,11 @@ import dotenv from 'dotenv';
 
 import { id, secret } from './auth';
 
-if (process.env.NODE_ENV !== 'production') {
+console.log('process:', process.env.NODE_ENV);
+if (
+  process.env.NODE_ENV !== 'production' ||
+  process.env.NODE_ENV !== undefined
+) {
   dotenv.config();
 }
 

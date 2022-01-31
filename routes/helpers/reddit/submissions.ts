@@ -57,7 +57,7 @@ export const getSearchSubmissions = async (
   r: Snoowrap,
   keyword: string,
   sub: string,
-  filter: string,
+  filter: 'relevance' | 'hot' | 'top' | 'new' | 'comments' | undefined,
 ) => {
   try {
     if (sub) {

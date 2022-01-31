@@ -21,7 +21,13 @@ const router = new Router({ prefix: '/vm3000' });
 router.get(
   '/search',
   async (context: {
-    request: { query: { keyword: string; subName: string; filter: string } };
+    request: {
+      query: {
+        keyword: string;
+        subName: string;
+        filter: 'relevance' | 'hot' | 'top' | 'new' | 'comments' | undefined;
+      };
+    };
     response: { status: number; body: string };
   }) => {
     try {

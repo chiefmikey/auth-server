@@ -52,3 +52,25 @@ export const getControversialSubmissions = async (r: Snoowrap, sub: string) => {
     return [];
   }
 };
+
+export const getSearchSubmissions = async (
+  r: Snoowrap,
+  keyword: string,
+  sub: string,
+  filter: string,
+) => {
+  try {
+    if (sub) {
+      if (filter) {
+        return await r.search({ query: keyword, subreddit: sub, sort: filter });
+      }
+      return await r.search({ query: keyword, subreddit: sub });
+    }
+    if (filter) {
+      return await r.search({ query: keyword, sort: filter });
+    }
+    return await r.search({ query: keyword });
+  } catch {
+    return [];
+  }
+};

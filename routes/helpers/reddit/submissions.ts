@@ -67,7 +67,6 @@ export const getSearchSubmissions = async (
           subreddit: sub,
           sort: filter,
           limit: 128,
-          show: 'all',
           type: 'video',
         });
       }
@@ -75,7 +74,6 @@ export const getSearchSubmissions = async (
         query: keyword,
         subreddit: sub,
         limit: 128,
-        show: 'all',
         type: 'video',
       });
     }
@@ -84,14 +82,12 @@ export const getSearchSubmissions = async (
         query: keyword,
         sort: filter,
         limit: 128,
-        show: 'all',
         type: 'video',
       });
     }
     return await r.search({
       query: keyword,
       limit: 128,
-      show: 'all',
       type: 'video',
     });
   } catch (error) {

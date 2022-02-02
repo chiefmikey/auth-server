@@ -63,27 +63,29 @@ export const getSearchSubmissions = async (
     if (sub) {
       if (filter) {
         return await r.search({
-          query: keyword,
+          query: `${keyword}&include_over_18=on`,
           subreddit: sub,
           sort: filter,
+          limit: 128,
         });
       }
       return await r.search({
-        query: keyword,
+        query: `${keyword}&include_over_18=on`,
         subreddit: sub,
         limit: 128,
-        restrictSr: false,
       });
     }
     if (filter) {
       return await r.search({
-        query: keyword,
+        query: `${keyword}&include_over_18=on`,
         sort: filter,
         limit: 128,
-        restrictSr: false,
       });
     }
-    return await r.search({ query: keyword, limit: 128, restrictSr: false });
+    return await r.search({
+      query: `${keyword}&include_over_18=on`,
+      limit: 128,
+    });
   } catch {
     return [];
   }

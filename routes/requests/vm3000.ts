@@ -42,6 +42,7 @@ router.get(
         context.request.query.subName,
         context.request.query.filter,
       );
+      console.log('Response', response);
       if (response && response.length > 0) {
         context.response.status = 200;
         context.response.body = JSON.stringify(response);

@@ -86,7 +86,8 @@ export const getSearchSubmissions = async (
       query: `${keyword}&include_over_18=on`,
       limit: 128,
     });
-  } catch {
+  } catch (error) {
+    console.log('Submission error', error);
     return [];
   }
 };

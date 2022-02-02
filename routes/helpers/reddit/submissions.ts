@@ -68,7 +68,7 @@ export const getSearchSubmissions = async (
           sort: filter,
           limit: 128,
           show: 'all',
-          type: 'image,video,link,videogif',
+          type: 'video',
         });
       }
       return await r.search({
@@ -76,7 +76,7 @@ export const getSearchSubmissions = async (
         subreddit: sub,
         limit: 128,
         show: 'all',
-        type: 'image,video,link,videogif',
+        type: 'video',
       });
     }
     if (filter) {
@@ -85,14 +85,14 @@ export const getSearchSubmissions = async (
         sort: filter,
         limit: 128,
         show: 'all',
-        type: 'image,video,link,videogif',
+        type: 'video',
       });
     }
     return await r.search({
       query: keyword,
       limit: 128,
       show: 'all',
-      type: 'image,video,link,videogif',
+      type: 'video',
     });
   } catch (error) {
     console.log('Submission error', error);

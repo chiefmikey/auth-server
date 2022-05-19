@@ -1,3 +1,4 @@
 # **Auth Server**
 
-_Headless API for delivering authenticated content to serverless front end applications_
+_Headless API for handling front end requests and returning content to a
+serverless front end_

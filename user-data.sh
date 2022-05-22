@@ -9,3 +9,6 @@ curl -fsSL https://rpm.nodesource.com/setup_lts.x | bash -
 yum install -y nodejs
 mkdir /home/ec2-user/auth-server
 mkdir /home/ec2-user/auth-server/node_modules
+cd /home/ec2-user/auth-server
+npm ci
+screen -Sdm node npm start

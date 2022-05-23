@@ -8,6 +8,6 @@ chmod +x ~/codedeploy-amazon.sh
 curl -fsSL https://rpm.nodesource.com/setup_lts.x | bash -
 yum install -y nodejs
 git clone https://github.com/chiefmikey/auth-server.git
-cd auth-server
+cd /auth-server
 npm ci
 screen -Sdm node npm start

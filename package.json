@@ -15,7 +15,7 @@
     "dotenv": "^16.0.1",
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
-    "octokit": "^1.7.2",
+    "octokit": "^1.8.0",
     "snoowrap": "^1.23.0",
     "ts-node": "^10.8.1"
   },

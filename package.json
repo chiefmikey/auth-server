@@ -17,7 +17,7 @@
     "koa-bodyparser": "^4.3.0",
     "octokit": "^1.8.1",
     "snoowrap": "^1.23.0",
-    "ts-node": "^10.8.1"
+    "ts-node": "^10.8.2"
   },
   "devDependencies": {
     "@mikey-pro/style-guide": "^4.138.0",

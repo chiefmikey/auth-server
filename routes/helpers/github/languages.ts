@@ -15,10 +15,11 @@ const fetchLanguage = async (username: string, repo: string, token: string) => {
         repo,
       },
     );
-    for await (const { data } of response) {
-      allLangs.push(data);
-    }
-    return allLangs;
+    // for await (const { data } of response) {
+    //   allLangs.push(data);
+    // }
+    console.log('languages', response);
+    return response;
   } catch {
     return [];
   }

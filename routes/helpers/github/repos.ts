@@ -20,7 +20,7 @@ const repos = async (username: string, token: string) => {
     //   }
     // }
     // return allRepos;
-    console.log(response);
+    console.log('repos', response);
     return response;
   } catch {
     return [];

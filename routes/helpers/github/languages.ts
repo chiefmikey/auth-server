@@ -1,20 +1,18 @@
-import { Octokit } from 'octokit';
+import { Octokit } from '@octokit/rest';
 
 let octokit: Octokit;
 
-const fetchLanguage = async (owner: string, repo: string, token: string) => {
+const fetchLanguage = async (username: string, repo: string, token: string) => {
   try {
     const allLangs = [];
     if (!octokit) {
       octokit = new Octokit({ auth: token });
     }
-    const response = await octokit.paginate.iterator(
-      'GET /repos/{owner}/{repo}/languages',
+    const response = await octokit.paginate(
+      octokit.rest.repos.listLanguages,
       {
-        owner,
+        username,
         repo,
-        type: 'public',
-        per_page: 100,
       },
     );
     for await (const { data } of response) {

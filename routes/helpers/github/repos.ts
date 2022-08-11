@@ -8,11 +8,12 @@ const repos = async (username: string, token: string) => {
     if (!octokit) {
       octokit = new Octokit({ auth: token });
     }
-    const response = octokit.paginate(octokit.rest.repos.listForUser, {
-      username,
-      type: 'owner',
-      per_page: 100,
-    });
+    const response = octokit.paginate(
+      octokit.rest.repos.listForUser, {
+        username,
+        type: 'owner',
+      }
+    );
     // for await (const { data } of response) {
     //   for (const repo of data) {
     //     allRepos.push(repo);

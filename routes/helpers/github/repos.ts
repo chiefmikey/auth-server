@@ -8,14 +8,10 @@ const repos = async (owner: string, token: string) => {
     if (!octokit) {
       octokit = new Octokit({ auth: token });
     }
-    const response = await octokit.paginate.iterator(
-      'GET /users/{owner}/repos',
-      {
-        owner,
-        type: 'public',
-        per_page: 100,
-      },
-    );
+    const response = octokit.paginate.iterator('GET /users/{owner}/repos', {
+      type: 'owner',
+      per_page: 100,
+    });
     for await (const { data } of response) {
       for (const repo of data) {
         allRepos.push(repo);

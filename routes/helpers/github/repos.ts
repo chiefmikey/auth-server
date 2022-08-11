@@ -1,24 +1,26 @@
-import { Octokit } from 'octokit';
+import { Octokit } from '@octokit/rest';
 
 let octokit: Octokit;
 
-const repos = async (owner: string, token: string) => {
+const repos = async (username: string, token: string) => {
   try {
     const allRepos = [];
     if (!octokit) {
       octokit = new Octokit({ auth: token });
     }
-    const response = octokit.paginate.iterator('GET /users/{owner}/repos', {
-      owner,
+    const response = octokit.paginate(octokit.rest.repos.listForUser, {
+      username,
       type: 'owner',
       per_page: 100,
     });
-    for await (const { data } of response) {
-      for (const repo of data) {
-        allRepos.push(repo);
-      }
-    }
-    return allRepos;
+    // for await (const { data } of response) {
+    //   for (const repo of data) {
+    //     allRepos.push(repo);
+    //   }
+    // }
+    // return allRepos;
+    console.log(response);
+    return response;
   } catch {
     return [];
   }

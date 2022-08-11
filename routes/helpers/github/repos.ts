@@ -9,6 +9,7 @@ const repos = async (owner: string, token: string) => {
       octokit = new Octokit({ auth: token });
     }
     const response = octokit.paginate.iterator('GET /users/{owner}/repos', {
+      owner,
       type: 'owner',
       per_page: 100,
     });

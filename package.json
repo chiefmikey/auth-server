@@ -1,11 +1,11 @@
 {
   "name": "auth-server",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Authentication server",
   "main": "app.ts",
   "scripts": {
     "start": "NODE_ENV=production node --loader ts-node/esm app.ts",
-    "test": "nodemon app.ts"
+    "dev": "nodemon app.ts"
   },
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.145.0",
@@ -40,15 +40,8 @@
   "bugs": {
     "url": "https://github.com/chiefmikey/auth-server/issues"
   },
-  "keywords": [
-    "auth-server",
-    "auth",
-    "authentication",
-    "server"
-  ],
-  "contributors": [
-    "Mikl Wolfe <wolfe@mikl.io> (https://mikl.io)"
-  ],
+  "keywords": ["auth-server", "auth", "authentication", "server"],
+  "contributors": ["Mikl Wolfe <wolfe@mikl.io> (https://mikl.io)"],
   "prettier": "@mikey-pro/prettier-config",
   "eslintConfig": {
     "extends": "@mikey-pro/eslint-config"

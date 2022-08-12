@@ -4,11 +4,11 @@ let octokit: Octokit;
 
 const repos = async (username: string, token: string) => {
   try {
-    const allRepos = [];
+    // const allRepos = [];
     if (!octokit) {
       octokit = new Octokit({ auth: token });
     }
-    const response = octokit.paginate(octokit.rest.repos.listForUser, {
+    const response = await octokit.paginate(octokit.rest.repos.listForUser, {
       username,
       type: 'owner',
     });

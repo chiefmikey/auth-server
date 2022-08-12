@@ -13,7 +13,10 @@ const repos = async (username: string, token: string) => {
         username,
         type: 'owner',
       },
-      (response) => response.data.filter((repo) => repo.fork === false),
+      (response) =>
+        response.data
+          .filter((repo) => repo.fork === false)
+          .map((repo) => repo.name),
     );
   } catch {
     return [];

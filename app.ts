@@ -11,7 +11,7 @@ interface ContextType {
 
 const app = new Koa();
 
-const whitelist = new Set([
+const allowList = new Set([
   'https://gitlang.net',
   'https://viewmaster3000.com',
 ]);
@@ -21,7 +21,7 @@ const checkUrl = (context: ContextType, next: () => void) => {
   if (
     !context.request.header.origin ||
     (context.request.header.origin &&
-      !whitelist.has(context.request.header.origin))
+      !allowList.has(context.request.header.origin))
   ) {
     context.throw('Bad-Origin');
   }
@@ -32,7 +32,7 @@ const checkCors = (context: ContextType) => {
   if (
     !context.request.header.origin ||
     (context.request.header.origin &&
-      !whitelist.has(context.request.header.origin))
+      !allowList.has(context.request.header.origin))
   ) {
     context.throw('CORS-Bad-Origin');
   }

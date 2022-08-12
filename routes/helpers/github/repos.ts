@@ -15,8 +15,8 @@ const repos = async (username: string, token: string) => {
       },
       (response) =>
         response.data.map((repo) => {
-          console.log('owny', repo.owner);
-          console.log('permy', repo.permissions);
+          console.log('owny', repo.name, repo.owner);
+          console.log('permy', repo.name, repo.permissions);
           return repo.name;
         }),
     );

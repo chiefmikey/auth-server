@@ -14,7 +14,11 @@ const repos = async (username: string, token: string) => {
         username,
         type: 'owner',
       },
-      (response) => console.log('indy responsey', response),
+      (response) =>
+        response.data.map((repo) => {
+          console.log('indy responsey', repo);
+          return repo.name;
+        }),
     );
     console.log('full res', response);
     // for await (const { data } of response) {

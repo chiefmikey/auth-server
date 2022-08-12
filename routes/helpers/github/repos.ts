@@ -8,17 +8,22 @@ const repos = async (username: string, token: string) => {
     if (!octokit) {
       octokit = new Octokit({ auth: token });
     }
-    const response = await octokit.paginate(octokit.rest.repos.listForUser, {
-      username,
-      type: 'owner',
-    });
+    const response = await octokit.paginate(
+      octokit.rest.repos.listForUser,
+      {
+        username,
+        type: 'owner',
+      },
+      (response) => console.log('indy responsey', response),
+    );
+    console.log('full res', response);
     // for await (const { data } of response) {
     //   for (const repo of data) {
     //     allRepos.push(repo);
     //   }
     // }
     // return allRepos;
-    console.log('repos', response);
+    // console.log('repos', response);
     return response;
   } catch {
     return [];

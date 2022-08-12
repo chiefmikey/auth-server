@@ -8,15 +8,12 @@ const fetchLanguage = async (owner: string, repo: string, token: string) => {
     if (!octokit) {
       octokit = new Octokit({ auth: token });
     }
-    const response = await octokit.paginate(octokit.rest.repos.listLanguages, {
+    const res = await octokit.paginate(octokit.rest.repos.listLanguages, {
       owner,
       repo,
     });
-    // for await (const { data } of response) {
-    //   allLangs.push(data);
-    // }
-    console.log('languages', response);
-    return response;
+    console.log('lannnnn', res);
+    return res;
   } catch {
     return [];
   }

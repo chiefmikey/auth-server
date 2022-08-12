@@ -36,12 +36,12 @@ router.get(
 router.get(
   '/repos',
   async (context: {
-    request: { query: { owner: string } };
+    request: { query: { username: string } };
     response: { status: number; body: string };
   }) => {
     try {
       const token = await auth();
-      const response = await repos(context.request.query.owner, token);
+      const response = await repos(context.request.query.username, token);
       if (response && response.length > 0) {
         context.response.status = 200;
         context.response.body = JSON.stringify(response);

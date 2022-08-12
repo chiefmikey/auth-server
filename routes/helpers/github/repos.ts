@@ -15,6 +15,7 @@ const repos = async (username: string, token: string) => {
       },
       (response) =>
         response.data.map((repo) => {
+          console.log('rezzzzzy', response);
           return repo.name;
         }),
     );

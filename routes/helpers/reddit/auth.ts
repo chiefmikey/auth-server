@@ -4,13 +4,13 @@ import {
 } from '@aws-sdk/client-secrets-manager';
 
 const region = 'us-east-2';
-const secretName = 'view-master-3000';
+const secretName = 'vm3000-auth';
 const appId = 'vm3000-id';
 const appSecret = 'vm3000-secret';
 
-export const id: () => Promise<string> = async () => {
+export const authId: () => Promise<string> = async () => {
   try {
-    let secret = '';
+    let secretId = '';
 
     const client = new SecretsManagerClient({
       region,
@@ -21,19 +21,22 @@ export const id: () => Promise<string> = async () => {
     );
 
     if (data && data.SecretString) {
-      secret = data.SecretString;
+      secretId = data.SecretString;
     }
+
     const parser: { parse: (argument: string) => { [appId]: string } } = JSON;
-    const parseSecret = parser.parse(secret);
+
+    const parseSecret = parser.parse(secretId);
     return parseSecret[appId];
   } catch (error) {
+    console.error(error);
     return JSON.stringify(error);
   }
 };
 
-export const secret: () => Promise<string> = async () => {
+export const authToken: () => Promise<string> = async () => {
   try {
-    let secret = '';
+    let token = '';
 
     const client = new SecretsManagerClient({
       region,
@@ -44,13 +47,16 @@ export const secret: () => Promise<string> = async () => {
     );
 
     if (data && data.SecretString) {
-      secret = data.SecretString;
+      token = data.SecretString;
     }
+
     const parser: { parse: (argument: string) => { [appSecret]: string } } =
       JSON;
-    const parseSecret = parser.parse(secret);
+
+    const parseSecret = parser.parse(token);
     return parseSecret[appSecret];
   } catch (error) {
+    console.error(error);
     return JSON.stringify(error);
   }
 };

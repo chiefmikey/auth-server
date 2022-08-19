@@ -1,7 +1,7 @@
 import axios from 'axios';
 import dotenv from 'dotenv';
 
-import { id, secret } from './auth';
+import { authId, authToken } from './auth';
 
 if (
   process.env.NODE_ENV !== 'production' ||
@@ -12,8 +12,8 @@ if (
 
 const token = async () => {
   try {
-    const appId = process.env.appId || (await id());
-    const appSecret = process.env.appSecret || (await secret());
+    const appId = process.env.appId || (await authId());
+    const appSecret = process.env.appSecret || (await authToken());
 
     const client = axios.create({
       auth: {

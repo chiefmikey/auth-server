@@ -21,11 +21,14 @@ const auth: () => Promise<string> = async () => {
     if (data && data.SecretString) {
       secret = data.SecretString;
     }
+
     const parser: { parse: (argument: string) => { [secretName]: string } } =
       JSON;
+
     const parseSecret = parser.parse(secret);
     return parseSecret[secretName];
-  } catch {
+  } catch (error) {
+    console.error(error);
     return '';
   }
 };

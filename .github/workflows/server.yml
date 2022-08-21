@@ -27,7 +27,7 @@ jobs:
 
     - name: Prune
       run : |
-        find . -type f -not -name '.git,server,appspec.yml,LICENSE,README.md' -delete
+        find . -type f -not -path '.git/*,docs/*,README.md,LICENCE' -delete
 
     - name: push
       run: |

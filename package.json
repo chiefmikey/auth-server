@@ -7,7 +7,7 @@
     "server:start": "NODE_ENV=production node --loader ts-node/esm ./app.ts",
     "server:gitlang": "NODE_ENV=production node --loader ts-node/esm ./gitlang.ts",
     "server:vm3000": "NODE_ENV=production node --loader ts-node/esm ./vm3000.ts",
-    "start:local": "NODE_ENV=production node --loader ts-node/esm ./server/app.ts",
+    "start:local": "NODE_ENV=development node --loader ts-node/esm ./server/app.ts",
     "dev": "nodemon ./server/app.ts"
   },
   "dependencies": {
@@ -17,13 +17,13 @@
     "@octokit/rest": "^19.0.4",
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "@types/koa__cors": "^3.3.0",
+    "@types/koa__router": "^8.0.11",
+    "@types/koa-bodyparser": "^4.3.7"
   },
   "devDependencies": {
     "@mikey-pro/style-guide": "^4.146.0",
-    "@types/koa__cors": "^3.3.0",
-    "@types/koa__router": "^8.0.11",
-    "@types/koa-bodyparser": "^4.3.7",
     "eslint": "^8.22.0",
     "nodemon": "^2.0.19",
     "prettier": "^2.7.1",

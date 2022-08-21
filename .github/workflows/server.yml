@@ -36,6 +36,7 @@ jobs:
           [ "${1}" != "${PWD}/LICENSE" ] &&
           [ "${1}" != "${PWD}/README.md" ]; then
             rm -rf ${1};
+          fi
         }
         export -f prune
         find . -maxdepth 1 | while read file; do prune ${file}; done

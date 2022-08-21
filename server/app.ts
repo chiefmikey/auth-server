@@ -2,8 +2,8 @@ import cors from '@koa/cors';
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 
-import gitlang from './gitlangRoutes/gitlang';
-import vm3000 from './vm3000Routes/vm3000';
+import gitlang from '../gitlangRoutes/gitlang';
+import vm3000 from '../vm3000Routes/vm3000';
 
 interface ContextType {
   request: { header: { origin?: string } };

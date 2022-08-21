@@ -34,6 +34,7 @@ jobs:
         echo $(pwd)
         echo here: $(ls -a)
         echo status: $(git status)
+        echo .git: $(ls -a .git)
         git config user.email "wolfemikl@gmail.com"
         git config user.name "Mikl Wolfe"
         git add server

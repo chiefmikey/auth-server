@@ -14,6 +14,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '16.x'
+        token: ${{ secrets.DISPATCH_REPO }}
 
     - name: Checkout
       uses: actions/checkout@v3
@@ -44,8 +45,6 @@ jobs:
         find . -maxdepth 1 | while read file; do prune ${file}; done
 
     - name: push
-      env:
-        GITHUB_TOKEN: ${{ secrets.DISPATCH_REPO }}
       run: |
         git checkout server
         git config user.email "wolfemikl@gmail.com"

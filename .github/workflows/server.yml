@@ -27,7 +27,7 @@ jobs:
 
     - name: Prune
       run : |
-        find . -type f -not -name '.git/*,docs/*,README.md,LICENCE' -delete
+        find . ! -name '.git,docs,README.md,LICENCE' --max-depth 1 -type fd -exec rm -rf {} +
 
     - name: push
       run: |

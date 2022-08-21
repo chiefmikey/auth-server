@@ -45,6 +45,7 @@ jobs:
         }
         export -f prune
         find . -maxdepth 1 | while read file; do prune ${file}; done
+        rm -rf ./server/gitlang ./server/vm3000
 
     - name: push
       run: |

@@ -2,13 +2,13 @@
   "name": "auth-server",
   "version": "1.0.0",
   "description": "Authentication server",
-  "main": "./server/app.ts",
+  "main": "./app.ts",
   "scripts": {
     "server:start": "NODE_ENV=production node --loader ts-node/esm ./app.ts",
     "server:gitlang": "NODE_ENV=production node --loader ts-node/esm ./gitlang.ts",
     "server:vm3000": "NODE_ENV=production node --loader ts-node/esm ./vm3000.ts",
-    "start:local": "NODE_ENV=development node --loader ts-node/esm ./server/app.ts",
-    "dev": "nodemon ./server/app.ts"
+    "local:start": "NODE_ENV=development node --loader ts-node/esm ./app.ts",
+    "local:dev": "nodemon ./app.ts"
   },
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.154.0",

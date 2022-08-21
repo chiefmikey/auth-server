@@ -19,6 +19,7 @@ jobs:
     - name: Build
       run: |
         git checkout -b server
+        git checkout server
         cp package.json package-lock.json README.md tsconfig.json LICENSE server/
         git config --global user.email "wolfemikl@gmail.com"
         git config --global user.name "Mikl Wolfe"

@@ -27,7 +27,7 @@ jobs:
 
     - name: Prune
       run : |
-        find ${PWD} ! -path './.git/*,./docs/*,./README.md,./LICENCE' -maxdepth 1 -type 'f,d' -exec 'rm -rf {}' \
+        find ${PWD} ! -path './.git/*,./docs/*,./README.md,./LICENCE' -delete -maxdepth 1 -type 'f,d'  \
 
     - name: push
       run: |

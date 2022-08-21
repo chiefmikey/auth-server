@@ -32,6 +32,9 @@ jobs:
     - name: push
       run: |
         echo $(pwd)
+        echo $(ls -la)
+        echo $(ls -la ../)
+        echo $(ls -la auth-server)
         git config user.email "wolfemikl@gmail.com"
         git config user.name "Mikl Wolfe"
         git add server

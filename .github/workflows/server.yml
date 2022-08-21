@@ -17,8 +17,6 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v3
-      env:
-        GITHUB_TOKEN: ${{ secrets.DISPATCH_REPO }}
 
     - name: Build
       run: |
@@ -55,6 +53,7 @@ jobs:
         git checkout server
         git config user.email "wolfemikl@gmail.com"
         git config user.name "Mikl Wolfe"
+        git config user.password ${{ env.GITHUB_TOKEN }}
         git add .
         git commit -am 'Update server'
         git push -fu origin server

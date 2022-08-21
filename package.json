@@ -4,7 +4,8 @@
   "description": "Authentication server",
   "main": "./server/app.ts",
   "scripts": {
-    "start": "NODE_ENV=production node --loader ts-node/esm ./server/app.ts",
+    "start": "NODE_ENV=production node --loader ts-node/esm ./app.ts",
+    "local": "NODE_ENV=production node --loader ts-node/esm ./server/app.ts",
     "dev": "nodemon ./server/app.ts"
   },
   "dependencies": {

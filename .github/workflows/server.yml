@@ -52,5 +52,5 @@ jobs:
         git config user.email "wolfemikl@gmail.com"
         git config user.name "Mikl Wolfe"
         git add .
-        git commit -am 'Update server'
+        git commit -am 'Deploy server'
         git push -fu origin server

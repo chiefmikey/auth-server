@@ -48,7 +48,8 @@ jobs:
         echo $(pwd)
         echo here: $(ls -a)
         echo status: $(git status)
-        echo .git: $(ls -a .git)
+        git checkout -b server
+        git checkout server
         git config user.email "wolfemikl@gmail.com"
         git config user.name "Mikl Wolfe"
         git add .

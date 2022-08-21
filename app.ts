@@ -2,7 +2,8 @@ import cors from '@koa/cors';
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 
-import index from './routes/index';
+import gitlang from './gitlangRoutes/gitlang';
+import vm3000 from './vm3000Routes/vm3000';
 
 interface ContextType {
   request: { header: { origin?: string } };
@@ -49,8 +50,10 @@ app
   .use(checkUrl)
   .use(cors(corsOptions))
   .use(bodyParser())
-  .use(index.routes())
-  .use(index.allowedMethods())
+  .use(gitlang.routes())
+  .use(gitlang.allowedMethods())
+  .use(vm3000.routes())
+  .use(vm3000.allowedMethods())
   .listen(80);
 
 export default app;

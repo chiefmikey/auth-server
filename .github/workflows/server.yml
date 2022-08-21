@@ -1,4 +1,4 @@
-name: Webpack Build
+name: Server Build
 
 on:
   push:
@@ -10,17 +10,29 @@ jobs:
     permissions:
       contents: write
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
       with:
         fetch-depth: '0'
-    - uses: actions/setup-node@v3
+
+    - name: Setup Node
+      uses: actions/setup-node@v3
       with:
         node-version: '16.x'
+
     - name: Build
       run: |
         git checkout -b server
         git checkout server
         cp package.json package-lock.json README.md tsconfig.json LICENSE server/
+
+
+    - name: Prune
+      run : |
+        find . -type f -not -name 'server,appspec.yml,LICENSE,README.md' -delete
+
+    - name: push
+      run: |
         git config --global user.email "wolfemikl@gmail.com"
         git config --global user.name "Mikl Wolfe"
         git add server

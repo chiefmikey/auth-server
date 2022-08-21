@@ -2,7 +2,6 @@ import cors from '@koa/cors';
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 
-import gitlang from '../gitlang/gitlang';
 import vm3000 from '../vm3000/vm3000';
 
 interface ContextType {
@@ -50,8 +49,6 @@ app
   .use(checkUrl)
   .use(cors(corsOptions))
   .use(bodyParser())
-  .use(gitlang.routes())
-  .use(gitlang.allowedMethods())
   .use(vm3000.routes())
   .use(vm3000.allowedMethods())
   .listen(80);

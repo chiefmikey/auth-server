@@ -24,10 +24,9 @@ jobs:
         git checkout server
         cp package.json package-lock.json README.md tsconfig.json LICENSE server/
 
-
     - name: Prune
       run : |
-        find ${PWD} ! -path './.git,./docs,./README.md,./LICENCE' -exec rm -rf {} -maxdepth 1 -type 'f,d' \
+        find ${PWD} ! -path './.git,./docs,./README.md,./LICENCE' -exec (rm -rf {}) -maxdepth 0 -type 'f,d' \
 
     - name: push
       run: |

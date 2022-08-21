@@ -28,7 +28,7 @@ jobs:
       run : |
         prune() { [ $1 != ${PWD} ] && rm -rf $1; }
         export -f prune
-        find ${PWD} ! -path '.,./.git,./docs,./README.md,./LICENCE' -maxdepth 0 -type 'f,d' -exec -c 'prune "$0"' {} \;
+        find ${PWD} ! -path '.,./.git,./docs,./README.md,./LICENCE' -maxdepth 0 -type 'f,d' | while read file; do rm -rf ${file}; done
 
     - name: push
       run: |

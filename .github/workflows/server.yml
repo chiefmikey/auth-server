@@ -47,7 +47,6 @@ jobs:
 
     - name: push
       run: |
-        git checkout server
         git config user.email "wolfemikl@gmail.com"
         git config user.name "Mikl Wolfe"
         git add .

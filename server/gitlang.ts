@@ -2,7 +2,7 @@ import cors from '@koa/cors';
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 
-import gitlang from '../gitlang/gitlang';
+import gitlang from './gitlang/gitlang';
 
 interface ContextType {
   request: { header: { origin?: string } };

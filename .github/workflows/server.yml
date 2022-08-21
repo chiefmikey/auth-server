@@ -31,12 +31,12 @@ jobs:
           if
           [ "${1}" != "." ] &&
           [ "${1}" != ".." ] &&
-          [ "${1}" != "${PWD}" ] &&
-          [ "${1}" != "${PWD}/server" ] &&
-          [ "${1}" != "${PWD}/.github" ] &&
-          [ "${1}" != "${PWD}/appspec.yml" ] &&
-          [ "${1}" != "${PWD}/LICENSE" ] &&
-          [ "${1}" != "${PWD}/README.md" ]; then
+          [ "${1}" != "./${PWD}" ] &&
+          [ "${1}" != "./${PWD}/server" ] &&
+          [ "${1}" != "./${PWD}/.github" ] &&
+          [ "${1}" != "./${PWD}/appspec.yml" ] &&
+          [ "${1}" != "./${PWD}/LICENSE" ] &&
+          [ "${1}" != "./${PWD}/README.md" ]; then
             rm -rf ${1};
           fi
         }

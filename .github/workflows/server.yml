@@ -27,6 +27,7 @@ jobs:
     - name: Prune
       run : |
         prune() { [ $1 != ${PWD} ] && rm -rf $1; }
+        export -f prune
         find ${PWD} ! -path '.,./.git,./docs,./README.md,./LICENCE' -maxdepth 0 -type 'f,d' -exec prune {} \;
 
     - name: push

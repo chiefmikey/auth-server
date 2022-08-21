@@ -7,11 +7,7 @@ on:
 jobs:
   aws-deployment:
     name: Deploy
-    environment:
-      name: auth-server
-      url: https://github.com
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/server'
     steps:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1

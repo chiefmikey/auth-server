@@ -1,14 +1,14 @@
 version: 0.0
 os: linux
 files:
- - source: .
+ - source: ./server
    destination: /home/ec2-user/auth-server
 hooks:
   ApplicationStop:
-   - location: stop.sh
+   - location: ./server/stop.sh
      timeout: 300
      runas: root
   ApplicationStart:
-   - location: init.sh
+   - location: ./server/init.sh
      timeout: 300
      runas: root

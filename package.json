@@ -2,21 +2,18 @@
   "name": "auth-server",
   "version": "1.0.0",
   "description": "Authentication server",
-  "main": "app.ts",
+  "main": "./server/app.ts",
   "scripts": {
-    "start": "NODE_ENV=production node --loader ts-node/esm app.ts",
-    "dev": "nodemon app.ts"
+    "start": "NODE_ENV=production node --loader ts-node/esm ./server/app.ts",
+    "dev": "nodemon ./server/app.ts"
   },
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.152.0",
     "@koa/cors": "^3.4.1",
     "@koa/router": "^12.0.0",
     "@octokit/rest": "^19.0.4",
-    "axios": "^0.27.2",
-    "dotenv": "^16.0.1",
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
-    "snoowrap": "^1.23.0",
     "ts-node": "^10.9.1"
   },
   "devDependencies": {

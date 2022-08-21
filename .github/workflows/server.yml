@@ -1,0 +1,27 @@
+name: Webpack Build
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: '0'
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '16.x'
+    - name: Build
+      run: |
+        git checkout -b server
+        cp package.json package-lock.json README.md tsconfig.json LICENSE server/
+        git config --global user.email "wolfemikl@gmail.com"
+        git config --global user.name "Mikl Wolfe"
+        git add server
+        git commit -am 'Update server'
+        git push -fu origin main:server

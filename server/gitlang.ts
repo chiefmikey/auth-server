@@ -11,10 +11,7 @@ interface ContextType {
 
 const app = new Koa();
 
-const allowList = new Set([
-  'https://gitlang.net',
-  'https://viewmaster3000.com',
-]);
+const allowList = new Set(['https://gitlang.net', 'https://beta.gitlang.net']);
 
 const checkUrl = (context: ContextType, next: () => void) => {
   console.log('Request:', context.request);

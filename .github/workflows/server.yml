@@ -53,7 +53,7 @@ jobs:
         git checkout server
         git config user.email "wolfemikl@gmail.com"
         git config user.name "Mikl Wolfe"
-        git config user.password ${{ env.GITHUB_TOKEN }}
+        git remote set-url origin https://chiefmikey:${{ env.GITHUB_TOKEN }}@github.com/chiefmikey/auth-server.git
         git add .
         git commit -am 'Update server'
         git push -fu origin server

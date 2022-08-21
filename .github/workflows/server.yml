@@ -32,8 +32,8 @@ jobs:
     - name: push
       run: |
         echo $(pwd)
-        echo here: $(ls)
-        echo below: $(ls ../)
+        echo here: $(ls -a)
+        echo below: $(ls -a ../)
         git config user.email "wolfemikl@gmail.com"
         git config user.name "Mikl Wolfe"
         git add server

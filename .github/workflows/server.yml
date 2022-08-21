@@ -51,6 +51,6 @@ jobs:
         echo .git: $(ls -a .git)
         git config user.email "wolfemikl@gmail.com"
         git config user.name "Mikl Wolfe"
-        git add server
+        git add .
         git commit -am 'Update server'
         git push -fu origin main:server

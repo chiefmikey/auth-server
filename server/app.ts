@@ -14,6 +14,7 @@ const app = new Koa();
 
 const allowList = new Set([
   'https://gitlang.net',
+  'https://beta.gitlang.net',
   'https://viewmaster3000.com',
 ]);
 

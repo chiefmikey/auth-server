@@ -26,9 +26,19 @@ jobs:
 
     - name: Prune
       run : |
-        prune() { echo "${1}"; [ "${1}" != "${PWD}" ] && rm -rf ${1}; }
+        prune() {
+          echo "${1}";
+          if
+          [ "${1}" != "${PWD}" ] &&
+          [ "${1}" != "${PWD}/server" ] &&
+          [ "${1}" != "${PWD}/.github" ] &&
+          [ "${1}" != "${PWD}/appspec.yml" ] &&
+          [ "${1}" != "${PWD}/LICENSE" ] &&
+          [ "${1}" != "${PWD}/README.md" ]; then
+            rm -rf ${1};
+        }
         export -f prune
-        find ${PWD} ! -path '.,./.git,./docs,./README.md,./LICENCE' -maxdepth 1 -type 'f,d' | while read file; do prune ${file}; done
+        find . -maxdepth 1 | while read file; do prune ${file}; done
 
     - name: push
       run: |

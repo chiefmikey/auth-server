@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  Build:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -33,6 +33,7 @@ jobs:
 
     - name: push
       run: |
+        echo $(pwd)
         git config user.email "wolfemikl@gmail.com"
         git config user.name "Mikl Wolfe"
         git add server

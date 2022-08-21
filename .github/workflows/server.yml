@@ -48,10 +48,9 @@ jobs:
         echo $(pwd)
         echo here: $(ls -a)
         echo status: $(git status)
-        git checkout -b server
         git checkout server
         git config user.email "wolfemikl@gmail.com"
         git config user.name "Mikl Wolfe"
         git add .
         git commit -am 'Update server'
-        git push -fu origin main:server
+        git push -fu origin server

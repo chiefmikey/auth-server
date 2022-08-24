@@ -4,11 +4,9 @@
   "description": "Authentication server",
   "main": "./app.ts",
   "scripts": {
-    "server:start": "NODE_ENV=production node --loader ts-node/esm ./app.ts",
-    "server:gitlang": "NODE_ENV=production node --loader ts-node/esm ./gitlang.ts",
-    "server:vm3000": "NODE_ENV=production node --loader ts-node/esm ./vm3000.ts",
-    "local:start": "NODE_ENV=development node --loader ts-node/esm ./app.ts",
-    "local:dev": "nodemon ./app.ts"
+    "prod": "NODE_ENV=production node --loader ts-node/esm ./app.ts",
+    "dev": "NODE_ENV=development node --loader ts-node/esm ./app.ts",
+    "nodemon": "nodemon ./app.ts"
   },
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.154.0",

@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "lib": ["es2021", "dom"],
-    "moduleResolution": "node",
-    "module": "esnext",
-    "target": "es6",
+    "lib": ["ES2022", "DOM"],
+    "moduleResolution": "Node",
+    "module": "ESNext",
+    "target": "ES2017",
     "sourceMap": true,
     "allowJs": true,
 
@@ -22,12 +22,5 @@
       "./*.ts": ["./*"]
     }
   },
-
-  "ts-node": {
-    "compilerOptions": {
-      "module": "commonjs",
-    },
-  },
-
   "exclude": ["node_modules", "**/*.spec.ts"]
 }

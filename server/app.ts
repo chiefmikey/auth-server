@@ -1,9 +1,24 @@
+import fs from 'node:fs';
+
 import cors from '@koa/cors';
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 
-import gitlang from './gitlang/gitlang';
-import vm3000 from './vm3000/vm3000';
+let gitlangImport;
+const appGitlang = './gitlang/gitlang';
+if (fs.existsSync(appGitlang)) {
+  console.log('gitlang exists');
+  const { default: gitlang } = await import(appGitlang);
+  gitlangImport = gitlang;
+}
+
+let vm3000Import;
+const appVm3000 = './vm3000/vm3000';
+if (fs.existsSync(appVm3000)) {
+  console.log('vm3000 exists');
+  const { default: vm3000 } = await import(appVm3000);
+  vm3000Import = vm3000;
+}
 
 interface ContextType {
   request: { header: { origin?: string } };
@@ -47,14 +62,13 @@ const corsOptions = {
   maxAge: 600,
 };
 
-app
-  .use(checkUrl)
-  .use(cors(corsOptions))
-  .use(bodyParser())
-  .use(gitlang.routes())
-  .use(gitlang.allowedMethods())
-  .use(vm3000.routes())
-  .use(vm3000.allowedMethods())
-  .listen(80);
+app.use(checkUrl).use(cors(corsOptions)).use(bodyParser());
+
+gitlangImport &&
+  app.use(gitlangImport.routes()).use(gitlangImport.allowedMethods());
+vm3000Import &&
+  app.use(vm3000Import.routes()).use(vm3000Import.allowedMethods());
+
+app.listen(80);
 
 export default app;

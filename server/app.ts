@@ -5,7 +5,7 @@ import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 
 let gitlangImport;
-const appGitlang = './gitlang/gitlang';
+const appGitlang = './gitlang/gitlang.ts';
 if (fs.existsSync(appGitlang)) {
   console.log('gitlang exists');
   const { default: gitlang } = await import(appGitlang);
@@ -13,7 +13,7 @@ if (fs.existsSync(appGitlang)) {
 }
 
 let vm3000Import;
-const appVm3000 = './vm3000/vm3000';
+const appVm3000 = './vm3000/vm3000.ts';
 if (fs.existsSync(appVm3000)) {
   console.log('vm3000 exists');
   const { default: vm3000 } = await import(appVm3000);
@@ -40,6 +40,7 @@ const checkUrl = (context: ContextType, next: () => void) => {
     (context.request.header.origin &&
       !allowList.has(context.request.header.origin))
   ) {
+    console.error('Bad-Origin:', context.request.header.origin);
     context.throw('Bad-Origin');
   }
   return next();
@@ -51,6 +52,7 @@ const checkCors = (context: ContextType) => {
     (context.request.header.origin &&
       !allowList.has(context.request.header.origin))
   ) {
+    console.error('CORS-Bad-Origin:', context.request.header.origin);
     context.throw('CORS-Bad-Origin');
   }
   return context.request.header.origin || '';

@@ -28,7 +28,7 @@
     "eslint": "^8.30.0",
     "nodemon": "^2.0.20",
     "prettier": "^2.8.1",
-    "stylelint": "^14.12.1"
+    "stylelint": "^14.16.0"
   },
   "license": "MIT",
   "repository": {

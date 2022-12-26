@@ -5,17 +5,17 @@
   "main": "./app.ts",
   "type": "module",
   "scripts": {
-    "prod": "NODE_ENV=production ts-node-esm --experimental-specifier-resolution=node ./app.ts",
-    "dev": "NODE_ENV=development ts-node-esm --experimental-specifier-resolution=node ./app.ts"
+    "dev": "NODE_ENV=development ts-node-esm --experimental-specifier-resolution=node ./app.ts",
+    "prod": "NODE_ENV=production ts-node-esm --experimental-specifier-resolution=node ./app.ts"
   },
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.238.0",
     "@koa/cors": "^4.0.0",
     "@koa/router": "^12.0.0",
     "@octokit/rest": "^19.0.5",
+    "@types/koa-bodyparser": "^4.3.10",
     "@types/koa__cors": "^3.3.0",
     "@types/koa__router": "^12.0.0",
-    "@types/koa-bodyparser": "^4.3.10",
     "axios": "^1.2.1",
     "koa": "^2.14.1",
     "koa-bodyparser": "^4.3.0",
@@ -24,31 +24,25 @@
     "typescript": "^4.9.4"
   },
   "devDependencies": {
-    "@mikey-pro/style-guide": "^4.146.0",
-    "eslint": "^8.30.0",
-    "nodemon": "^2.0.20",
-    "prettier": "^2.8.1",
-    "stylelint": "^14.16.0"
+    "mikey-pro": "^6.0.10",
+    "nodemon": "^2.0.20"
   },
-  "license": "MIT",
+  "homepage": "https://github.com/chiefmikey/auth-server#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chiefmikey/auth-server.git"
   },
-  "homepage": "https://github.com/chiefmikey/auth-server#readme",
-  "author": "me",
   "bugs": {
     "url": "https://github.com/chiefmikey/auth-server/issues"
   },
+  "license": "MIT",
   "keywords": [
     "auth-server",
     "auth",
     "authentication",
     "server"
   ],
-  "contributors": [
-    "Mikl Wolfe <wolfe@mikl.io> (https://mikl.io)"
-  ],
+  "author": "Mikl Wolfe <wolfe@mikl.io> (https://mikl.io)",
   "prettier": "@mikey-pro/prettier-config",
   "eslintConfig": {
     "extends": "@mikey-pro/eslint-config"

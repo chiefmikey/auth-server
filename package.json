@@ -5,9 +5,9 @@
   "main": "./app.ts",
   "type": "module",
   "scripts": {
-    "dev": "NODE_ENV=development ts-node-esm --experimental-specifier-resolution=node ./app.ts",
+    "dev": "ts-node ./app.ts",
     "fix": "eslint --fix '**/*'",
-    "prod": "NODE_ENV=production ts-node-esm --experimental-specifier-resolution=node ./app.ts"
+    "prod": "ts-node ./app.ts"
   },
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.507.0",

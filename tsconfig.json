@@ -6,7 +6,7 @@
     ],
     "moduleResolution": "Node",
     "module": "ESNext",
-    "target": "ES2017",
+    "target": "ESNext",
     "sourceMap": true,
     "allowJs": true,
     "strict": true,
@@ -17,11 +17,11 @@
     "noEmit": true,
     "noImplicitAny": true,
     "removeComments": true,
-    "preserveConstEnums": true,
-    "paths": {
-      "./*.ts": [
-        "./*"
-      ]
+    "preserveConstEnums": true
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
     }
   },
   "exclude": [

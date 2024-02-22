@@ -1,14 +1,14 @@
 version: 0.0
 os: linux
 files:
- - source: ./server
-   destination: /home/ec2-user/server
+  - source: ./server
+    destination: /home/ec2-user/server
 hooks:
   ApplicationStop:
-   - location: ./server/stop.sh
-     timeout: 300
-     runas: root
+    - location: ./server/stop.sh
+      timeout: 300
+      runas: root
   ApplicationStart:
-   - location: ./server/init.sh
-     timeout: 300
-     runas: root
+    - location: ./server/init.sh
+      timeout: 300
+      runas: root

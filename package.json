@@ -9,7 +9,7 @@
     "prod": "NODE_ENV=production ts-node app.ts"
   },
   "dependencies": {
-    "@aws-sdk/client-secrets-manager": "^3.515.0",
+    "@aws-sdk/client-secrets-manager": "^3.521.0",
     "@koa/cors": "^5.0.0",
     "@koa/router": "^12.0.1",
     "@octokit/rest": "^20.0.2",

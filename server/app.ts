@@ -40,9 +40,13 @@ const run = async () => {
   }
 
   const allowList = new Set([
+    'https://d1zkwczqxe8fen.cloudfront.net/',
     'https://gitlang.net',
+    'https://www.gitlang.net',
     'https://beta.gitlang.net',
+    'https://www.beta.gitlang.net',
     'https://viewmaster3000.com',
+    'https://www.viewmaster3000.com',
   ]);
 
   const checkUrl = (context: ContextType, next: () => void) => {

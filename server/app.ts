@@ -40,7 +40,7 @@ const run = async () => {
   }
 
   const allowList = new Set([
-    'https://d1zkwczqxe8fen.cloudfront.net/',
+    'https://d1zkwczqxe8fen.cloudfront.net',
     'https://gitlang.net',
     'https://www.gitlang.net',
     'https://beta.gitlang.net',

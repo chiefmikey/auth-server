@@ -39,15 +39,7 @@ const run = async () => {
     importVm3000 = vm3000;
   }
 
-  const allowList = new Set([
-    'https://d1zkwczqxe8fen.cloudfront.net',
-    'https://gitlang.net',
-    'https://www.gitlang.net',
-    'https://beta.gitlang.net',
-    'https://www.beta.gitlang.net',
-    'https://viewmaster3000.com',
-    'https://www.viewmaster3000.com',
-  ]);
+  const allowList = new Set(['https://gitlang.net', 'https://www.gitlang.net']);
 
   const checkUrl = (context: ContextType, next: () => void) => {
     console.log('Request:', context.request);

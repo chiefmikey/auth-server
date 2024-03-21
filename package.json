@@ -9,19 +9,19 @@
     "prod": "NODE_ENV=production ts-node app.ts"
   },
   "dependencies": {
-    "@aws-sdk/client-secrets-manager": "^3.533.0",
+    "@aws-sdk/client-secrets-manager": "^3.535.0",
     "@koa/cors": "^5.0.0",
     "@koa/router": "^12.0.1",
     "@octokit/rest": "^20.0.2",
     "@types/koa-bodyparser": "^4.3.12",
     "@types/koa__cors": "^5.0.0",
     "@types/koa__router": "^12.0.4",
-    "axios": "^1.6.7",
-    "koa": "^2.15.0",
+    "axios": "^1.6.8",
+    "koa": "^2.15.2",
     "koa-bodyparser": "^4.4.1",
     "snoowrap": "^1.23.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.3"
   },
   "devDependencies": {
     "mikey-pro": "^7.2.1"

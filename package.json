@@ -9,14 +9,14 @@
     "prod": "NODE_ENV=production ts-node app.ts"
   },
   "dependencies": {
-    "@aws-sdk/client-secrets-manager": "^3.576.0",
+    "@aws-sdk/client-secrets-manager": "^3.590.0",
     "@koa/cors": "^5.0.0",
     "@koa/router": "^12.0.1",
     "@octokit/rest": "^20.1.1",
     "@types/koa-bodyparser": "^4.3.12",
     "@types/koa__cors": "^5.0.0",
     "@types/koa__router": "^12.0.4",
-    "axios": "^1.6.8",
+    "axios": "^1.7.2",
     "koa": "^2.15.3",
     "koa-bodyparser": "^4.4.1",
     "snoowrap": "^1.23.0",
@@ -24,7 +24,7 @@
     "typescript": "^5.4.5"
   },
   "devDependencies": {
-    "mikey-pro": "^7.5.2"
+    "mikey-pro": "^7.5.3"
   },
   "homepage": "https://github.com/chiefmikey/auth-server#readme",
   "repository": {

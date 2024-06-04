@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 
 import cors from '@koa/cors';
-import Router from '@koa/router';
+import type Router from '@koa/router';
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 
@@ -10,16 +10,15 @@ interface ContextType {
   throw: (error: string) => void;
 }
 
-type RouterModule = {
+interface RouterModule {
   default: Router;
-};
+}
 
 const app = new Koa();
 
-const run = async () => {
+const run = async (): Promise<void> => {
   let importGitlang;
-  let importGitlangBeta;
-  let importVm3000;
+  let importConvert;
 
   const appGitlang = './gitlang/gitlang.ts';
   if (fs.existsSync(appGitlang)) {
@@ -27,16 +26,10 @@ const run = async () => {
     importGitlang = gitlang;
   }
 
-  const appGitlangBeta = './gitlang-beta/gitlang.ts';
-  if (fs.existsSync(appGitlangBeta)) {
-    const { default: gitlang } = (await import(appGitlangBeta)) as RouterModule;
-    importGitlangBeta = gitlang;
-  }
-
-  const appVm3000 = './vm3000/vm3000.ts';
-  if (fs.existsSync(appVm3000)) {
-    const { default: vm3000 } = (await import(appVm3000)) as RouterModule;
-    importVm3000 = vm3000;
+  const appConvert = './convert/convert.ts';
+  if (fs.existsSync(appConvert)) {
+    const { default: convert } = (await import(appConvert)) as RouterModule;
+    importConvert = convert;
   }
 
   const allowList = new Set(['https://gitlang.net', 'https://www.gitlang.net']);
@@ -51,7 +44,7 @@ const run = async () => {
       console.error('Bad-Origin:', context.request.header.origin);
       context.throw('Bad-Origin');
     }
-    return next();
+    next();
   };
 
   const checkCors = (context: ContextType) => {
@@ -74,18 +67,16 @@ const run = async () => {
 
   app.use(checkUrl).use(cors(corsOptions)).use(bodyParser());
 
-  importGitlang &&
+  if (importGitlang) {
     app.use(importGitlang.routes()).use(importGitlang.allowedMethods());
-  importGitlangBeta &&
-    app.use(importGitlangBeta.routes()).use(importGitlangBeta.allowedMethods());
-  importVm3000 &&
-    app.use(importVm3000.routes()).use(importVm3000.allowedMethods());
+  }
+  if (importConvert) {
+    app.use(importConvert.routes()).use(importConvert.allowedMethods());
+  }
 
   app.listen(80);
 };
 
-run().catch((error) => {
-  console.error(error);
-});
+void run();
 
 export default app;

@@ -17,7 +17,7 @@ jobs:
         node-version: '16.x'
 
     - name: Checkout
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
       with:
         token: ${{ secrets.DISPATCH_WORKFLOW }}
 

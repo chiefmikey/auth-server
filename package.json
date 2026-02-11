@@ -16,7 +16,7 @@
     "@types/koa-bodyparser": "^4.3.12",
     "@types/koa__cors": "^5.0.0",
     "@types/koa__router": "^12.0.4",
-    "axios": "^1.12.0",
+    "axios": "^1.13.5",
     "koa": "^3.0.3",
     "koa-bodyparser": "^4.4.1",
     "snoowrap": "^1.23.0",

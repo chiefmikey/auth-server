@@ -2,6 +2,7 @@
   "name": "auth-server",
   "version": "1.0.0",
   "description": "Authentication server",
+  "type": "module",
   "main": "./app.ts",
   "scripts": {
     "dev": "NODE_ENV=development ts-node app.ts",
@@ -24,7 +25,7 @@
     "typescript": "^5.6.2"
   },
   "devDependencies": {
-    "mikey-pro": "^7.5.3"
+    "mikey-pro": "^10.1.0"
   },
   "homepage": "https://github.com/chiefmikey/auth-server#readme",
   "repository": {
@@ -42,11 +43,8 @@
     "server"
   ],
   "author": "Mikl Wolfe <wolfe@mikl.io> (https://mikl.io)",
-  "prettier": "@mikey-pro/prettier-config",
-  "eslintConfig": {
-    "extends": "@mikey-pro/eslint-config"
-  },
+  "prettier": "mikey-pro/prettier",
   "stylelint": {
-    "extends": "@mikey-pro/stylelint-config"
+    "extends": "mikey-pro/stylelint"
   }
 }
